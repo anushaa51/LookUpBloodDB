@@ -30,7 +30,8 @@
     margin-left : 9%;
     margin-right: 9%;
     margin-top: 5%;
-
-
-
+  }
+  .marg {
+    margin-left: 2px;
+    margin-top: 2px;
   }

@@ -4,11 +4,12 @@ function login(){
 				};
 
 	$.ajax({
+		async:true,
 		type: "POST",
 		url: "/login", //name of python method
 		data: login,
 		success: function(response){
-		 				$('html').html(response);
+		 				$('#replace').html(response);
 		 			}
 		});
 }
