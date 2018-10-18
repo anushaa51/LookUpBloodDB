@@ -1,0 +1,26 @@
+.boxin {
+    
+    width: 50%;
+    margin : auto;
+    padding: 25px 25px 25px 25px;
+
+  
+  }
+
+  .drop {
+  	color: #dc143c;
+  	padding-right: 40px;
+  }
+
+
+  .inline {
+  	display: inline;
+  }
+
+  .font {
+  	font-family: "Courier New", Courier, monospace;
+  }
+
+  .mar {
+    margin-top: 15px;
+  }
