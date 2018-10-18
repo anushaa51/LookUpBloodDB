@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify, render_template
 app = Flask(__name__)
 
 @app.route("/")
-def mainPage():
+def loginPage():
     return render_template("index.html")
 
 # @app.route('/cool_form')
@@ -24,23 +24,18 @@ def mainPage():
 
 @app.route("/login", methods = ['POST'])
 def login():
-    uname=request.form.get('username') #getting details from POST 
-    pwd=request.form.get('password')
+    username=request.form.get('username') #getting details from POST 
+    password=request.form.get('password')
     try:
         conobj = mysql.connector.connect(host='localhost',
                                        database='db',
-                                       user=uname,
-                                       password=pwd)
+                                       user=username,
+                                       password=password)
         if conobj.is_connected():
-            return jsonify({"res" : "Success"})
+            return render_template('select.html')
     except Error as e:
-        return jsonify({"res" : e.args[1]})
-    #finally:
-        #conobj.close()
-    return jsonify({"res" : "failed to connect to MySQL"})
-
-
-
+        return render_template('fail.html')
+    return render_template('fail.html')
 
 
 
