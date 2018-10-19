@@ -4,7 +4,7 @@ function login(){
 	var login = {'username':$("#username")[0].value, //get username and password values from webpage via its id and create login object
 				 'password':$("#password")[0].value
 				};
-	window.loginglobal = login;
+	window.loginglobal = login; //global object to store login details throughout session
 
 	$.ajax({
 		async:true,
@@ -12,7 +12,7 @@ function login(){
 		url: "/login", //name of python method
 		data: login,
 		success: function(response){
-		 				$('#replace').html(response);
+		 				$('#replace').html(response); //replace html id 'response'
 		 			}
 		});
 
@@ -38,7 +38,7 @@ $("#view").click(function() {
 });
 
 
-$(".inner").click(function(e){
+$(".inner").click(function(e){ //which dropdown option selected
     var option = {'id':e.target.id}
     $.ajax({
 		async:true,
@@ -52,20 +52,9 @@ $(".inner").click(function(e){
 });
 
 
-function ins(){
+function insdonor(){ 
 	var params = [$("#did")[0].value,$("#name")[0].value, $("#age")[0].value,$("#gender")[0].value,$("#phone")[0].value]
-
-	// var did = $("#did")[0].value;
-	// var name = $("#name")[0].value;
-	// var age = $("#age")[0].value;
-	// var gender = $("#gender")[0].value;
-	// var phone = $("#phone")[0].value;
-	for (var i = params.length - 1; i >= 0; i--) {
-		if(params[i] == "")
-			params[i] = "NULL";
-	}
-	// send("ins",[did,name,age,gender,phone]);
-	send("ins",params)
+	send("insdonor",params)
 
 }
 
@@ -91,3 +80,12 @@ function send(query,params){
 	});
 }
 
+function del(){
+	$.ajax({
+		type: "POST",
+		url: "/display",
+		success: function(response){
+		 				$('body').html(response); //replace html id 'response'
+		 			}
+	});
+}

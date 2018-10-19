@@ -13,38 +13,17 @@
 <body>
 
 
-<!-- <h3>Select attribute to delete</h3>
- --><table class="table table-hover">
-	<thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Full Name</th>
-      <th scope="col">Age</th>
-      <th scope="col">Gender</th>
-      <th scope="col">Phone Number</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    {% for row in data %}
-        <tr>
-        {% for d in row %}
-            <td>{{ d }}</td>
-        {% endfor %}
-        </tr>
-    {% endfor %}
-  </tbody>
-</table>
+<button onclick="del()">CLICK</button>
+<script>
+var url = "{{url_for('static',filename='javascript/jquery-3.3.1.min.js')}}";
+$.getScript(url);
+</script>
 
 <script>
 var url = "{{url_for('static',filename='javascript/scripts.js')}}";
 $.getScript(url);
 </script>
 
-<script>
-var url = "{{url_for('static',filename='javascript/jquery-3.3.1.min.js')}}";
-$.getScript(url);
-</script>
 
     
 	<!-- <script type="text/javascript" src = "{{url_for('static',filename='javascript/jquery-3.3.1.min.js')}}"></script>

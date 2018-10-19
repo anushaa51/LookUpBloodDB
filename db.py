@@ -67,8 +67,8 @@ def query(username,password,sql,val):
     try:
         conobj = mysql.connector.connect(host='localhost',
                                        database='db',
-                                       user='root',
-                                       password='antechi')
+                                       user=username,
+                                       password=password)
         if conobj.is_connected():
             cursor = conobj.cursor()
             cursor.execute(sql,val)
@@ -77,7 +77,26 @@ def query(username,password,sql,val):
     return "a"
 
 
+@app.route('/display', methods = ['POST'])       
+def display():
+    try:
+        conobj = mysql.connector.connect(host='localhost',
+                                       database='db',
+                                       user='root',
+                                       password='antechi')
+        if conobj.is_connected():
+            cursor = conobj.cursor()
+            query = "SELECT * from donor"
+            cursor.execute(query)
+
+            data = cursor.fetchall()
+
+            return render_template("deldonor.html", data=data)
+
+    finally: conobj.close()
+    return "a"
+
+
 if __name__ == "__main__":
     app.run()
- 
  
