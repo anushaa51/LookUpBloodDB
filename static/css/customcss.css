@@ -5,17 +5,16 @@
 }
 @font-face {
   font-family: 'PT Sans Narrow';
-  src : url({{ url_for('static',filename='css/PT_Sans-Narrow-Web-Regular.ttf') }}) ;
+  src : url('PT_Sans-Narrow-Web-Regular.ttf');
 }
 
 .boxin {
-    
     width: 50%;
     margin : auto;
     padding: 2%;
  }
 
-  .drop {
+.drop {
   	color: #dc143c;
   	padding-right: 40px;
   }
