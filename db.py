@@ -37,6 +37,13 @@ def login():
         return render_template('fail.html')
     return render_template('fail.html')
 
+@app.route("/select",methods = ['POST'])
+def select():
+  option = request.form.get('id')
+  if option == 'insdonor':
+      return render_template('insert.html')
+  elif option == 'insorg':
+      return render_template('insorg.html')
 
 
 if __name__ == "__main__":

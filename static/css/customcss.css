@@ -1,24 +1,50 @@
+@font-face {
+    font-family: 'Advent Pro';
+    src: url('AdventPro-Medium.ttf');
+
+}
+@font-face {
+  font-family: 'PT Sans Narrow';
+  src : url({{ url_for('static',filename='css/PT_Sans-Narrow-Web-Regular.ttf') }}) ;
+}
+
 .boxin {
     
     width: 50%;
     margin : auto;
     padding: 2%;
-
-  
-  }
+ }
 
   .drop {
   	color: #dc143c;
   	padding-right: 40px;
   }
 
+.boxin:hover {
+  border-color:  rgba(82,168,236,.8);
+  box-shadow: 0 0px 0px rgba(182,168,236,.8) inset, 0 0 8px rgba(82,168,236,.8);
+  outline: 0 none;
+}
+
+.jumbotron:hover {
+  border-color:  rgba(182,50,50,.8);
+  box-shadow: 0 0px 0px rgba(182,50,50,.8) inset, 0 0 8px rgba(182,50,50,.8);
+  outline: 0 none;
+}
+
 
   .inline {
   	display: inline;
   }
 
-  .font {
+  .font1 {
   	font-family: "Courier New", Courier, monospace;
+    font-weight: 800;
+  }
+
+  .font2{
+    font-family: 'PT Sans Narrow', sans-serif;
+
   }
 
   .mar {
@@ -34,4 +60,5 @@
   .marg {
     margin-left: 2px;
     margin-top: 2px;
+    margin-bottom: 2px;
   }

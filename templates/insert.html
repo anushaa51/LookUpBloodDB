@@ -5,23 +5,13 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}"> 
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}"> 
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/customcss.css') }}"> 
+
+
 	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/bootstrap.css"> 
 	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/all.css">
 	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/customcss.css">
 </head>
-<body class="font"> 
-	<div class="jumbotron font">
-		<div class="text-center">
-			<span class="drop">
-				<i class="fas fa-tint fa-4x"></i>
-			</span>
-	  		<h1 class="display-4 inline">Blood Bank Database</h1> 
-	  	</div>
-  	
-  		<hr class="my-4 text-center">
-  		<p class="text-center">Database that permits an authorised user to insert, update, delete and view data.</p>
-  		
-	</div>
+
 	<h4> Enter donor's personal information</h4>
 	<form>
 			<div class="input-group mb-3 marg" style="float: left;">
@@ -63,6 +53,12 @@
 
 			<h4> Enter donor's blood information</h4>
 
+			<div class="input-group mb-3 marg" style="float: left;">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text" id="basic-addon1">Blood ID</span>
+			  </div>
+			  <input type="text" class="form-control" id = "bid" placeholder="BloodID" aria-label="blood" aria-describedby="basic-addon1">
+			</div>
 			<div class="input-group mb-3 marg" style="float: left;">
 			  <div class="input-group-prepend">
 			    <span class="input-group-text" id="basic-addon1">Blood Group</span>
@@ -128,7 +124,25 @@
 			  <input type="text" class="form-control" id="weight" placeholder="in kgs" aria-label="Weight" aria-describedby="basic-addon1">
 			</div>
 
+			<br><br><br><br><br>
+
+			<h4> Enter branch information</h4>
+			<div class="input-group mb-3 marg" style="float: left;">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text" id="basic-addon1">Organisation ID</span>
+			  </div>
+			  <input type="text" class="form-control" id = "oid" placeholder="Org ID" aria-label="oid" aria-describedby="basic-addon1">
+			</div>
+
+			<div class="input-group mb-3 marg" style="float: left;">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text" id="basic-addon1">Branch ID</span>
+			  </div>
+			  <input type="text" class="form-control" id = "brid" placeholder="Branch ID" aria-label="branch id" aria-describedby="basic-addon1">
+			</div>
 
 	</form>
+	<br><br><br>
+	<div class="text-center"><button type="button" class="btn btn-dark" style="margin-bottom: 15px;">Submit</button></div>
 </body>
 </html>

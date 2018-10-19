@@ -6,9 +6,9 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}"> 
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}"> 
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/customcss.css') }}"> 
-<!-- 	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/bootstrap.css"> 
+	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/bootstrap.css"> 
 	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/all.css">
-	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/customcss.css"> -->
+	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/customcss.css">
 </head>
 <body>
 
@@ -19,8 +19,8 @@
 		    Insert
 		  </button>
 		  <div class="dropdown-menu d1" aria-labelledby="dropdownMenu2">
-		    <button class="btn btn-outline-info" type="button">Donor </button>
-		    <button class="btn btn-outline-info" type="button">Organisation/Branch</button>
+		    <button class="btn btn-outline-info inner" type="button" id ="insdonor">Donor </button>
+		    <button class="btn btn-outline-info inner" type="button" id ="insorg">Organisation/Branch</button>
 		  </div>
 		</div>
 
@@ -29,8 +29,8 @@
 		    Update
 		  </button>
 		  <div class="dropdown-menu d2" aria-labelledby="dropdownMenu2">
-		    <button class="btn btn-outline-success" type="button">Donor </button>
-		    <button class="btn btn-outline-success" type="button">Organisation/Branch</button>
+		    <button class="btn btn-outline-success inner" type="button" id = "upddonor">Donor </button>
+		    <button class="btn btn-outline-success inner" type="button" id ="udporg">Organisation/Branch</button>
 		  </div>
 		</div>
 
@@ -39,8 +39,8 @@
 		    Delete
 		  </button>
 		  <div class="dropdown-menu d3" aria-labelledby="dropdownMenu2">
-		    <button class="btn btn-outline-danger" type="button">Donor </button>
-		    <button class="btn btn-outline-danger" type="button">Organisation/Branch</button>
+		    <button class="btn btn-outline-danger inner" type="button" id = "deldonor">Donor </button>
+		    <button class="btn btn-outline-danger inner" type="button" id = "delorg">Organisation/Branch</button>
 		  </div>
 		</div>
 
@@ -49,8 +49,8 @@
 		    View
 		  </button>
 		  <div class="dropdown-menu d4" aria-labelledby="dropdownMenu2">
-		    <button class="btn btn-outline-dark" type="button">Donor </button>
-		    <button class="btn btn-outline-dark" type="button">Organisation/Branch</button>
+		    <button class="btn btn-outline-dark inner" type="button" id = "viewdonor">Donor </button>
+		    <button class="btn btn-outline-dark inner" type="button" id = "vieworg">Organisation/Branch</button>
 		  </div>
 		</div>
 	</div>
@@ -70,10 +70,11 @@ $.getScript(url);
 </script>
 
     
-<!-- 	<script type="text/javascript" src = "{{url_for('static',filename='javascript/jquery-3.3.1.min.js')}}"></script>
+	<!-- <script type="text/javascript" src = "{{url_for('static',filename='javascript/jquery-3.3.1.min.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static',filename='javascript/select.js')}}"></script>
+        <script type="text/javascript" src = "file:///home/anusha/blooddonation/LookUpBloodDB/static/javascript/jquery-3.3.1.min.js"></script>
+
     <script type="text/javascript" src = "file:///home/anusha/blooddonation/LookUpBloodDB/static/javascript/select.js"></script>
-    <script type="text/javascript" src = "file:///home/anusha/blooddonation/LookUpBloodDB/static/javascript/jquery-3.3.1.min.js"></script>
   -->
 
 </body>

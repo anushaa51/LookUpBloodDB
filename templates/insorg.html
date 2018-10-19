@@ -1,0 +1,60 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}"> 
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}"> 
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/customcss.css') }}"> 
+
+
+	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/bootstrap.css"> 
+	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/all.css">
+	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/customcss.css">
+</head>
+<body>
+	<h4> Enter organisation's information</h4>
+	<form>
+			<div class="input-group mb-3 marg" style="float: left;">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text" id="basic-addon1">Organisation ID</span>
+			  </div>
+			  <input type="text" class="form-control" id = "oid" placeholder="organisation ID" aria-label="OrganisationID" aria-describedby="basic-addon1">
+			</div>
+
+			<div class="input-group mb-3 marg" style="float: left;">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text" id="basic-addon1">Organisation Name</span>
+			  </div>
+			  <input type="text" class="form-control" id = "Oname" placeholder="Name" aria-label="name" aria-describedby="basic-addon1">
+			</div>
+
+			<div class="input-group mb-3 marg" style="float: left;">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text" id="basic-addon1">Number of branches</span>
+			  </div>
+			  <input type="text" class="form-control" id = "no" placeholder="No-of-branches" aria-label="no" aria-describedby="basic-addon1">
+			</div> 
+
+		<h4> Enter branch information </h4>
+			<div class="input-group mb-3 marg" style="float: left;">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text" id="basic-addon1">Branch ID</span>
+			  </div>
+			  <input type="text" class="form-control" id = "brid" placeholder="Branch ID" aria-label="BranchID" aria-describedby="basic-addon1">
+			</div>
+
+			<div class="input-group mb-3 marg" style="float: left;">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text" id="basic-addon1">Address</span>
+			  </div>
+			  <input type="text" class="form-control" id = "braddr" placeholder="Address" aria-label="Address" aria-describedby="basic-addon1">
+			</div>
+
+			<div class="input-group mb-3 marg" style="float: left;">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text" id="basic-addon1">Phone number</span>
+			  </div>
+			  <input type="text" class="form-control" id = "brphno" placeholder="Area code - Number" aria-label="brphno" aria-describedby="basic-addon1">
+			</div> 
+</body>
+</html>
