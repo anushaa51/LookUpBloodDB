@@ -46,9 +46,10 @@ def select():
   elif option == 'delorg':
       return render_template('delorg.html')
   elif option == 'viewdonor':
-      return render_template('viewdonor.html')
+      return render_template('viewwdonor.html')
   elif option == 'vieworg':
       return render_template('vieworg.html')
+  else: return None
 
 
 
@@ -84,8 +85,8 @@ def query(username,password,sql,val):
     return "a"
 
 
-@app.route('/display', methods = ['POST'])       
-def display():
+@app.route('/viewdonor', methods = ['POST'])       
+def viewdonor():
     try:
         conobj = mysql.connector.connect(host='localhost',
                                        database='db',
@@ -93,12 +94,12 @@ def display():
                                        password='antechi')
         if conobj.is_connected():
             cursor = conobj.cursor()
-            query = "SELECT * from donor"
+            query = "SELECT * from donor natural join blood"
             cursor.execute(query)
 
             data = cursor.fetchall()
 
-            return render_template("deldonor.html", data=data)
+            return render_template("viewdonor.html", data=data)
 
     finally: conobj.close()
     return "a"
@@ -107,3 +108,54 @@ def display():
 if __name__ == "__main__":
     app.run()
  
+# function ins(){
+#   var name = $("#inname")[0].value;
+#   var dno = $("#dno")[0].value;
+#   send("ins",[name,dno]);
+# }
+# function del(){
+#   var cond = $("#delcond")[0].value;
+#   send("del",cond);
+# }
+# function upd(){
+#   var cont = $("#updcont")[0].value;
+#   var cond = $("#updcond")[0].value;
+#   send("upd",[cont,cond]);
+# }
+# function send(query,params){
+#   var qtype,d;
+#   if(query==="upd"){
+#     qtype = "/update";
+#     d = {'uname':$("#uname")[0].value,
+#       'pwd':$("#pwd")[0].value,
+#       'cont':params[0],
+#       'cond':params[1]};
+#   }
+#   if(query==="del"){
+#     qtype = "/delete";
+#     d = {'uname':$("#uname")[0].value,
+#       'pwd':$("#pwd")[0].value,
+#       'cond':params};
+#   }
+#   if(query==="ins"){
+#     qtype = "/insert";
+#     d = {'uname':$("#uname")[0].value,
+#       'pwd':$("#pwd")[0].value,
+#       'name':params[0],
+#       'dno':params[1]};
+#   }
+
+#   $.ajax({
+#     async: true,
+#     type: "POST",
+#     url: qtype,
+#     data: d,
+#     success: function(data){
+#       var res = data['res'];
+#       $("#response")[0].innerHTML="[ Response: "+res+" ]";
+#     },
+#     error: function(data){
+#       $("#response")[0].innerHTML="Response: Login failure ]";
+#     }
+#   });
+# }

@@ -91,10 +91,10 @@ function send(query,params){
 	});
 }
 
-function del(){
+function viewdonor(){
 	$.ajax({
 		type: "POST",
-		url: "/display",
+		url: "/viewdonor",
 		success: function(response){
 		 				$('body').html(response); //replace html id 'response'
 		 			}

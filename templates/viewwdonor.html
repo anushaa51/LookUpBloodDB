@@ -12,30 +12,16 @@
 </head>
 <body class="font1" >
 
-<h3> Donor Information</h3>
-<table class="table table-hover">
-    <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Full Name</th>
-      <th scope="col">Age</th>
-      <th scope="col">Gender</th>
-      <th scope="col">Phone Number</th>
-      <th scope="col">BID</th>
-      <th scope="col">Haemo</th>
+<h3> View By </h3>
+<button onclick="viewdonor()">All donors</button>
+<button >blood type</button>
+<button>bid</button>
+<button>did</button>
+<button>date</button>
+<button>name</button>
 
-    </tr>
-  </thead>
-  <tbody >
-    {% for row in data %}
-            <tr> 
-            {% for d in row %}
-                <td>{{ d }}</td>
-            {% endfor %}
-            </tr>
-    {% endfor %}
-  </tbody>
-</table>
+
+
 <script>
 var url = "{{url_for('static',filename='javascript/jquery-3.3.1.min.js')}}";
 $.getScript(url);
