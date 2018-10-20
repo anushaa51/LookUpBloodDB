@@ -11,49 +11,49 @@
 	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/customcss.css">
 </head>
 <body>
-
-
-	<div class="btn-toolbar">
-		<div class="dropdown big" id = "insert">
-		  <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		    Insert
-		  </button>
-		  <div class="dropdown-menu d1" aria-labelledby="dropdownMenu2">
-		    <button class="btn btn-outline-info inner" type="button" id ="insdonor">Donor </button>
-		    <button class="btn btn-outline-info inner" type="button" id ="insorg">Organisation/Branch</button>
-		  </div>
-		</div>
-
-		<div class="dropdown big" id ="update">
-		  <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		    Update
-		  </button>
-		  <div class="dropdown-menu d2" aria-labelledby="dropdownMenu2">
-		    <button class="btn btn-outline-success inner" type="button" id = "upddonor">Donor </button>
-		    <button class="btn btn-outline-success inner" type="button" id ="udporg">Organisation/Branch</button>
-		  </div>
-		</div>
-
-		<div class="dropdown big" id = "delete">
-		  <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		    Delete
-		  </button>
-		  <div class="dropdown-menu d3" aria-labelledby="dropdownMenu2">
-		    <button class="btn btn-outline-danger inner" type="button" id = "deldonor">Donor </button>
-		    <button class="btn btn-outline-danger inner" type="button" id = "delorg">Organisation/Branch</button>
-		  </div>
-		</div>
-
-		<div class="dropdown big" id = "view">
-		  <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		    View
-		  </button>
-		  <div class="dropdown-menu d4" aria-labelledby="dropdownMenu2">
-		    <button class="btn btn-outline-dark inner" type="button" id = "viewdonor">Donor </button>
-		    <button class="btn btn-outline-dark inner" type="button" id = "vieworg">Organisation/Branch</button>
-		  </div>
+<div class = "card-group justify-content-center">
+	<div class="card border-primary mb-3 text-center" style="max-width: 18rem;">
+		<div class="card-header">Insert</div>
+		<div class="card-body text-primary">
+		  	<div class="btn-group-vertical" role="group" aria-label="Basic example">
+		  		<button class="btn btn-outline-info inner" type="button" id ="insdonor">Donor </button>
+				<button class="btn btn-outline-info inner" type="button" id ="insorg">Organisation/Branch</button>
+			</div>
 		</div>
 	</div>
+
+	<div class="card border-primary mb-3 text-center" style="max-width: 18rem;">
+		<div class="card-header">Update</div>
+		<div class="card-body text-primary">
+			<div class="btn-group-vertical" role="group" aria-label="Basic example">
+				<button class="btn btn-outline-success inner" type="button" id = "upddonor">Donor </button>
+				<button class="btn btn-outline-success inner" type="button" id ="udporg">Organisation/Branch</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="card border-primary mb-3 text-center" style="max-width: 18rem;">
+		<div class="card-header">Delete</div>
+		<div class="card-body text-primary">
+			<div class="btn-group-vertical" role="group" aria-label="Basic example">
+				<button class="btn btn-outline-danger inner" type="button" id = "deldonor">Donor </button>
+				<button class="btn btn-outline-danger inner" type="button" id = "delorg">Organisation/Branch</button>
+			</div>
+		</div>
+	</div>
+	<div class="card border-primary mb-3 text-center" style="max-width: 18rem;">
+		<div class="card-header">View</div>
+		<div class="card-body text-primary">
+			<div class="btn-group-vertical" role="group" aria-label="Basic example">
+				<button class="btn btn-outline-dark inner" type="button" id = "viewdonor">Donor </button>
+				<button class="btn btn-outline-dark inner" type="button" id = "vieworg">Organisation/Branch</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
 
 
 		
@@ -76,6 +76,5 @@ $.getScript(url);
 
     <script type="text/javascript" src = "file:///home/anusha/blooddonation/LookUpBloodDB/static/javascript/scripts.js"></script>
   -->
-
 </body>
 </html>
