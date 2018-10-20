@@ -6203,6 +6203,10 @@ button.bg-dark:focus {
 
 .border-primary {
   border-color: #007bff !important;
+    border-radius: 20px;
+  border-width: 1px;
+  border-bottom-width: 1px;
+  overflow: hidden;
 }
 
 .border-secondary {
@@ -6211,10 +6215,18 @@ button.bg-dark:focus {
 
 .border-success {
   border-color: #28a745 !important;
+    border-radius: 20px;
+  border-width: 1px;
+  border-bottom-width: 1px;
+  overflow: hidden;
 }
 
 .border-info {
   border-color: #17a2b8 !important;
+    border-radius: 20px;
+  border-width: 1px;
+  border-bottom-width: 1px;
+  overflow: hidden;
 }
 
 .border-warning {
@@ -6223,6 +6235,10 @@ button.bg-dark:focus {
 
 .border-danger {
   border-color: #dc3545 !important;
+    border-radius: 20px;
+  border-width: 1px;
+  border-bottom-width: 1px;
+  overflow: hidden;
 }
 
 .border-light {
@@ -6231,6 +6247,11 @@ button.bg-dark:focus {
 
 .border-dark {
   border-color: #343a40 !important;
+  border-radius: 20px;
+  border-width: 1px;
+  border-bottom-width: 1px;
+  overflow: hidden;
+/*  border-bottom-right-radius:0px;*/
 }
 
 .border-white {

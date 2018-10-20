@@ -19,24 +19,6 @@ function login(){
 }
 
 
-$("#insert").click(function() {
-  $( ".d1").toggle();
-});
-
-
-$("#update").click(function() {
-  $( ".d2").toggle();
-});
-
-
-$("#delete").click(function() {
-  $( ".d3").toggle();
-});
-
-$("#view").click(function() {
-  $( ".d4").toggle();
-});
-
 
 $(".inner").click(function(e){ //which dropdown option selected
     var option = {'id':e.target.id}
