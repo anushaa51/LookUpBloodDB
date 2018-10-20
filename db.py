@@ -61,6 +61,13 @@ def insert():
     val=(request.form.get('did'),request.form.get('name'),request.form.get('age'),request.form.get('gender'),request.form.get('phone'))
     return query(username,password,sql,val)
 
+@app.route("/dele", methods = ['POST'])
+def dele():
+    username=request.form.get('username')
+    password=request.form.get('password')
+    sql="DELETE FROM donor WHERE did = "+request.form.get('cond')
+    val=None
+    return query(username,password,sql,val)
 
 def query(username,password,sql,val):
 
