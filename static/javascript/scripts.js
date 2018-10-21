@@ -1,4 +1,6 @@
 var loginglobal;
+var row_id = 1;
+
 
 function login(){
 	var login = {'username':$("#username")[0].value, //get username and password values from webpage via its id and create login object
@@ -35,7 +37,7 @@ $(".inner").click(function(e){ //which dropdown option selected
 
 
 function insdonor(){ 
-	var params = [$("#did")[0].value,$("#name")[0].value, $("#age")[0].value,$("#gender")[0].value,$("#phone")[0].value]
+	var params = [$("#did")[0].value,$("#name")[0].value, $("#age")[0].value,$("#gender")[0].value,$("#phone")[0].value] //
 	send("insdonor",params)
 
 }
@@ -78,7 +80,7 @@ function viewdonor(){
 		type: "POST",
 		url: "/viewdonor",
 		success: function(response){
-		 				$('body').html(response); //replace html id 'response'
+		 				$('#replace').html(response); //replace html id 'response'
 		 			}
 	});
 }
@@ -99,7 +101,6 @@ function dele(id){
 	send("del",cond);
 }
 
-var row_id = 1;
 
 function addRow() {
 	$( "tr" ).each(function( row_id ) {

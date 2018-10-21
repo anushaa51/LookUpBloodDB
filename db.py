@@ -15,15 +15,13 @@ def login():
     username=request.form.get('username') #getting details from POST 
     password=request.form.get('password')
     try:
-        conobj = mysql.connector.connect(host='localhost',
-                                       database='db',
-                                       user=username,
-                                       password=password)
-        if conobj.is_connected():
+        if username=='root' and password=='antechi':
             return render_template('select.html')
-    except Error as e:
+        elif username=='hospital' and password == 'h':
+            return render_template('hospital.html')
+        else: return render_template('fail.html')
+    except:
         return render_template('fail.html')
-    finally: conobj.close()
     return render_template('fail.html')
 
 
