@@ -3313,7 +3313,7 @@ input[type="button"].btn-block {
   flex-wrap: wrap;
   -ms-flex-align: stretch;
   align-items: stretch;
-  width: 33%;
+  width: 100%;
 }
 
 .input-group > .form-control,
@@ -4381,6 +4381,7 @@ input[type="button"].btn-block {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  height: 50%;
 }
 
 .card > hr {
@@ -6236,7 +6237,7 @@ button.bg-dark:focus {
 .border-danger {
   border-color: #dc3545 !important;
     border-radius: 20px;
-  border-width: 1px;
+  border-width: px;
   border-bottom-width: 1px;
   overflow: hidden;
 }

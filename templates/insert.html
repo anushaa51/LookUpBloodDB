@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 	<title>Blood Donation</title>
@@ -10,141 +10,159 @@
 	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/bootstrap.css"> 
 	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/all.css">
 	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/customcss.css">
-</head>
+</head> 
+<body> -->
+	<form class = "font2">
+			<div class="card card-round  border-danger mb-3 mx-auto mt-5" style="max-width: 50%;">
+				<div class="card-header text-center" id = "h3"><h4>Enter donor's personal information</h4></div>
+				<div class="card-body text-primary text-center mx-auto">
+					<div class="input-group mb-3 marg  mx-auto" >
+					  	<div class="input-group-prepend">
+					    	<span class="input-group-text" id="basic-addon1">ID</span>
+					  	</div>
+					  	<input type="text" class="form-control" id = "did" placeholder="Donor ID" aria-label="DonorID" aria-describedby="basic-addon1">
+					</div>
 
-	<h4> Enter donor's personal information</h4>
-	<form>
-			<div class="input-group mb-3 marg" style="float: left;">
-			  <div class="input-group-prepend">
-			    <span class="input-group-text" id="basic-addon1">ID</span>
-			  </div>
-			  <input type="text" class="form-control" id = "did" placeholder="Donor ID" aria-label="DonorID" aria-describedby="basic-addon1">
+					<div class="input-group mb-3 marg mx-auto" >
+						<div class="input-group-prepend">
+						    <span class="input-group-text" id="basic-addon1">Full Name</span>
+						</div>
+						<input type="text" class="form-control" id = "name" placeholder="First Middle Last" aria-label="Fullname" aria-describedby="basic-addon1">
+					</div>
+
+					<div class="input-group mb-3 marg mx-auto" >
+						<div class="input-group-prepend">
+						    <span class="input-group-text" id="basic-addon1">Age</span>
+						</div>
+						<input type="text" class="form-control" id = "age" placeholder="Age" aria-label="Age" aria-describedby="basic-addon1">
+					</div> 
+
+					<div class="input-group mb-3 marg mx-auto" >
+						  <div class="input-group-prepend">
+						      <span class="input-group-text" id="basic-addon1">Gender</span>
+						</div>
+						<input type="text" class="form-control" id = "gender" placeholder="M/F/O" aria-label="Gender" aria-describedby="basic-addon1">
+					</div>
+
+					<div class="input-group mb-3 marg mx-auto" >
+						  <div class="input-group-prepend">
+						    <span class="input-group-text" id="basic-addon1">Phone Number</span>
+						  </div>
+						  <input type="text" class="form-control" id = "phone" placeholder="+91" aria-label="PhoneNo" aria-describedby="basic-addon1">
+					</div>
+				    	<button type="button" class="btn btn-dark" onclick="insdonor()" > Submit </button></a>
+							
+				</div>
 			</div>
+			
+			<div class="card card-round  border-danger mb-3 mx-auto mt-5" style="max-width: 50%;">
+				<div class="card-header text-center" id = "h3"><h4>Enter donor's blood information</h4></div>
+				<div class="card-body text-primary text-center mx-auto">
+					<div class="input-group mb-3 marg  mx-auto" >
+						  	<div class="input-group-prepend">
+						    	<span class="input-group-text" id="basic-addon1">Blood ID</span>
+						    </div>
+						    <input type="text" class="form-control" id = "bid" placeholder="BloodID" aria-label="blood" aria-describedby="basic-addon1">
+					</div>
+					<div class="input-group mb-3 marg  mx-auto" >
+						  <div class="input-group-prepend">
+						    <span class="input-group-text" id="basic-addon1">Blood Group</span>
+						  </div>
+						  <input type="text" class="form-control" id = "bg" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+					</div>
 
-			<div class="input-group mb-3 marg" style="float: left;">
-			  <div class="input-group-prepend">
-			    <span class="input-group-text" id="basic-addon1">Full Name</span>
-			  </div>
-			  <input type="text" class="form-control" id = "name" placeholder="First Middle Last" aria-label="Fullname" aria-describedby="basic-addon1">
+					<div class="input-group mb-3 marg  mx-auto" >
+						<div class="input-group-prepend">
+						  <span class="input-group-text" id="basic-addon1">Haemoglobin</span>
+						</div>
+						<input type="text" class="form-control" id = "haemo" placeholder="g/dL" aria-label="Haemoglobin" aria-describedby="basic-addon1">
+					</div>
+
+					<div class="input-group mb-3 marg  mx-auto" >
+						<div class="input-group-prepend">
+
+						  	<span class="input-group-text" id="basic-addon1">Cholestrol</span>
+						</div>
+						<input type="text" class="form-control" id = "chol" placeholder="mg/dL" aria-label="Cholestrol" aria-describedby="basic-addon1">
+						</div> 
+
+					<div class="input-group mb-3 marg  mx-auto" >
+						<div class="input-group-prepend">
+						  	<span class="input-group-text" id="basic-addon1">Amount</span>
+						</div>
+						<input type="text" class="form-control" id = "amt" placeholder="in millilitres" aria-label="Amount" aria-describedby="basic-addon1">
+					</div>
+
+					<div class="input-group mb-3 marg  mx-auto" >						  
+						<div class="input-group-prepend">
+						    <span class="input-group-text" id="basic-addon1">Date</span>
+						  </div>
+						  <input type="text" class="form-control" id = "date" placeholder="yyyy-mm-dd" aria-label="Date" aria-describedby="basic-addon1">
+						</div>
+				</div>
 			</div>
+			
 
-			<div class="input-group mb-3 marg" style="float: left;">
-			  <div class="input-group-prepend">
-			    <span class="input-group-text" id="basic-addon1">Age</span>
-			  </div>
-			  <input type="text" class="form-control" id = "age" placeholder="Age" aria-label="Age" aria-describedby="basic-addon1">
-			</div> 
 
-			<div class="input-group mb-3 marg" style="float: left;">
-			  <div class="input-group-prepend">
-			    <span class="input-group-text" id="basic-addon1">Gender</span>
-			  </div>
-			  <input type="text" class="form-control" id = "gender" placeholder="M/F/O" aria-label="Gender" aria-describedby="basic-addon1">
-			</div>
+			<div class="card card-round  border-danger mb-3 mx-auto mt-5" style="max-width: 50%;">
+				<div class="card-header text-center" id = "h3"><h4>Enter donor's health report	</h4></div>
+				<div class="card-body text-primary text-center mx-auto">
+					<div class="input-group mb-3 marg  mx-auto" >
 
-			<div class="input-group mb-3 marg" style="float: left;">
-			  <div class="input-group-prepend">
-			    <span class="input-group-text" id="basic-addon1">Phone Number</span>
-			  </div>
-			  <input type="text" class="form-control" id = "phone" placeholder="+91" aria-label="PhoneNo" aria-describedby="basic-addon1">
-			</div>
-			<br><br><br><br><br>
-	    	<button type="button" class="btn btn-dark" onclick="insdonor()" > Submit </button></a>
 
-			<br><br><br><br><br>
-
-			<h4> Enter donor's blood information</h4>
-
-			<div class="input-group mb-3 marg" style="float: left;">
-			  <div class="input-group-prepend">
-			    <span class="input-group-text" id="basic-addon1">Blood ID</span>
-			  </div>
-			  <input type="text" class="form-control" id = "bid" placeholder="BloodID" aria-label="blood" aria-describedby="basic-addon1">
-			</div>
-			<div class="input-group mb-3 marg" style="float: left;">
-			  <div class="input-group-prepend">
-			    <span class="input-group-text" id="basic-addon1">Blood Group</span>
-			  </div>
-			  <input type="text" class="form-control" id = "bg" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
-			</div>
-
-			<div class="input-group mb-3 marg" style="float: left;">
-			  <div class="input-group-prepend">
-			    <span class="input-group-text" id="basic-addon1">Haemoglobin</span>
-			  </div>
-			  <input type="text" class="form-control" id = "haemo" placeholder="g/dL" aria-label="Haemoglobin" aria-describedby="basic-addon1">
-			</div>
-
-			<div class="input-group mb-3 marg" style="float: left;">
-			  <div class="input-group-prepend">
-			    <span class="input-group-text" id="basic-addon1">Cholestrol</span>
-			  </div>
-			  <input type="text" class="form-control" id = "chol" placeholder="mg/dL" aria-label="Cholestrol" aria-describedby="basic-addon1">
-			</div> 
-
-			<div class="input-group mb-3 marg" style="float: left;">
-			  <div class="input-group-prepend">
-			    <span class="input-group-text" id="basic-addon1">Amount</span>
-			  </div>
-			  <input type="text" class="form-control" id = "amt" placeholder="in millilitres" aria-label="Amount" aria-describedby="basic-addon1">
-			</div>
-
-			<div class="input-group mb-3 marg" style="float: left;">
-			  <div class="input-group-prepend">
-			    <span class="input-group-text" id="basic-addon1">Date</span>
-			  </div>
-			  <input type="text" class="form-control" id = "date" placeholder="yyyy-mm-dd" aria-label="Date" aria-describedby="basic-addon1">
-			</div>
-
-			<br><br><br><br><br>
-			<h4> Enter donor's health report</h4>
-			<div class="input-group mb-3 marg" style="float: left;">
 			  <div class="input-group-prepend">
 			    <span class="input-group-text" id="basic-addon1">Body Temperature</span>
 			  </div>
 			  <input type="text" class="form-control" id = "temp" placeholder="in Celsius" aria-label="Temperature" aria-describedby="basic-addon1">
 			</div>
 			
-			<div class="input-group mb-3 marg" style="float: left;">
+					<div class="input-group mb-3 marg  mx-auto" >
 			  <div class="input-group-prepend">
 			    <span class="input-group-text" id="basic-addon1">Blood Pressure</span>
 			  </div>
 			  <input type="text" class="form-control"  id = "bp" placeholder="mm Hg" aria-label="BP" aria-describedby="basic-addon1">
 			</div>
 
-			<div class="input-group mb-3 marg" style="float: left;">
+					<div class="input-group mb-3 marg  mx-auto" >
 			  <div class="input-group-prepend">
 			    <span class="input-group-text" id="basic-addon1">Pulse Rate</span>
 			  </div>
 			  <input type="text" class="form-control" id = "pulse" placeholder="bpm" aria-label="Pulse" aria-describedby="basic-addon1">
 			</div> 
 
-			<div class="input-group mb-3 marg" style="float: left;">
+					<div class="input-group mb-3 marg  mx-auto" >
 			  <div class="input-group-prepend">
 			    <span class="input-group-text" id="basic-addon1">Weight</span>
 			  </div>
 			  <input type="text" class="form-control" id="weight" placeholder="in kgs" aria-label="Weight" aria-describedby="basic-addon1">
 			</div>
+		</div>
+	</div>
 
-			<br><br><br><br><br>
+		
+			<div class="card card-round  border-danger mb-3 mx-auto mt-5" style="max-width: 50%;">
+				<div class="card-header text-center" id = "h3"><h4>Enter branch information</h4></div>
+				<div class="card-body text-primary text-center mx-auto">
+					<div class="input-group mb-3 marg  mx-auto" >
+						  <div class="input-group-prepend">
+						    <span class="input-group-text" id="basic-addon1">Organisation ID</span>
+						  </div>
+						  <input type="text" class="form-control" id = "oid" placeholder="Org ID" aria-label="oid" aria-describedby="basic-addon1">
+						</div>
 
-			<h4> Enter branch information</h4>
-			<div class="input-group mb-3 marg" style="float: left;">
-			  <div class="input-group-prepend">
-			    <span class="input-group-text" id="basic-addon1">Organisation ID</span>
-			  </div>
-			  <input type="text" class="form-control" id = "oid" placeholder="Org ID" aria-label="oid" aria-describedby="basic-addon1">
-			</div>
+					<div class="input-group mb-3 marg  mx-auto" >
+						  <div class="input-group-prepend">
+						    <span class="input-group-text" id="basic-addon1">Branch ID</span>
+						  </div>
+						  <input type="text" class="form-control" id = "brid" placeholder="Branch ID" aria-label="branch id" aria-describedby="basic-addon1">
+						</div>
+					</div>
+				
 
-			<div class="input-group mb-3 marg" style="float: left;">
-			  <div class="input-group-prepend">
-			    <span class="input-group-text" id="basic-addon1">Branch ID</span>
-			  </div>
-			  <input type="text" class="form-control" id = "brid" placeholder="Branch ID" aria-label="branch id" aria-describedby="basic-addon1">
-			</div>
 
 	</form>
-	<br><br><br>
+</div>
+
 	<div class="text-center"><button type="button" class="btn btn-dark" style="margin-bottom: 15px;">Submit</button></div>
 
 	<script>
@@ -156,5 +174,5 @@
 	$.getScript(url);
 	</script>
 
-</body>
-</html>
+<!-- </body>
+</html> -->

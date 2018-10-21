@@ -42,7 +42,21 @@ def select():
   elif option == 'updorg':
       return render_template('updorg.html')
   elif option == 'deldonor':
-      return render_template('deldonor.html')
+        try:
+            conobj = mysql.connector.connect(host='localhost',
+                                           database='db',
+                                           user='root',
+                                           password='antechi')
+            if conobj.is_connected():
+                cursor = conobj.cursor()
+                query = "SELECT * from donor natural join blood"
+                cursor.execute(query)
+
+                data = cursor.fetchall()
+
+                return render_template("deldonor.html", data=data)
+
+        finally: conobj.close()
   elif option == 'delorg':
       return render_template('delorg.html')
   elif option == 'viewdonor':

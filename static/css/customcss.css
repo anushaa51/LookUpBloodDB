@@ -4,15 +4,35 @@
 
 }
 @font-face {
-  font-family: 'PT Sans Narrow';
-  src : url('PT_Sans-Narrow-Web-Regular.ttf');
+  font-family: 'PT Sans';
+  src : url('PT_Sans-Web-Regular.ttf');
 }
-
+.btn-round{
+border-radius: 30px;
+}
+.card-round{
+  border-radius: 45px;
+}
 .boxin {
     width: 50%;
     margin : auto;
     padding: 2%;
  }
+
+
+#username,#password {
+    display: block;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    border-radius: 25px;
+    line-height: 100px;
+    border: 1px solid #e07781;
+    text-align: inherit;
+    font-size: 20px;
+    outline: none;
+    min-width: 500px;
+}
 
 .drop {
   	color: #dc143c;
@@ -46,7 +66,7 @@
   }
 
   .font2{
-    font-family: 'PT Sans Narrow', sans-serif;
+    font-family: 'PT Sans', sans-serif;
 
   }
 

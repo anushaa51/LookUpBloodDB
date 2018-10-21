@@ -4,47 +4,47 @@
 	<title>Blood Donation</title>
 
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}"> 
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/al-l.css') }}"> 
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}"> 
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/customcss.css') }}"> 
 	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/bootstrap.css"> 
 	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/all.css">
 	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/customcss.css">
 </head>
-<body class = "font1">
+<body >
 
+<div class = "font2">
+	<h3>Double click on donor to delete from database</h3>
+	<table class="table table-hover" id = "tablee" onclick="addRow(this.id)">
+		<thead>
+	    <tr>
+	      <th scope="col">ID</th>
+	      <th scope="col">Full Name</th>
+	      <th scope="col">Age</th>
+	      <th scope="col">Gender</th>
+	      <th scope="col">Phone Number</th>
 
-<h3>Double click on donor to delete from database</h3>
-<table class="table table-hover" id = "tablee" onclick="addRow(this.id)">
-	<thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Full Name</th>
-      <th scope="col">Age</th>
-      <th scope="col">Gender</th>
-      <th scope="col">Phone Number</th>
+	    </tr>
+	  </thead>
+	  <tbody >
+	    {% for row in data %}
+	        	<tr> 
+		        {% for d in row %}
+		            <td>{{ d }}</td>
+		        {% endfor %}
+		        </tr>
+	    {% endfor %}
+	  </tbody>
+	</table>
+</div>
+	<script>
+	var url = "{{url_for('static',filename='javascript/scripts.js')}}";
+	$.getScript(url);
+	</script>
 
-    </tr>
-  </thead>
-  <tbody >
-    {% for row in data %}
-        	<tr> 
-	        {% for d in row %}
-	            <td>{{ d }}</td>
-	        {% endfor %}
-	        </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
-<script>
-var url = "{{url_for('static',filename='javascript/scripts.js')}}";
-$.getScript(url);
-</script>
-
-<script>
-var url = "{{url_for('static',filename='javascript/jquery-3.3.1.min.js')}}";
-$.getScript(url);
-</script>
+	<script>
+	var url = "{{url_for('static',filename='javascript/jquery-3.3.1.min.js')}}";
+	$.getScript(url);
+	</script>
 
     
 	<!-- <script type="text/javascript" src = "{{url_for('static',filename='javascript/jquery-3.3.1.min.js')}}"></script>
