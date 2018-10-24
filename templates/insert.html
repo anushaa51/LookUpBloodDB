@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Blood Donation</title>
@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/all.css">
 	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/customcss.css">
 </head> 
-<body> -->
+<body> 
 	<form class = "font2">
 			<div class="card card-round border-danger mb-3 mx-auto mt-5" style="max-width: 50%;">
 				<div class="card-header text-center" id = "h3"><h4>Enter donor's personal information</h4></div>
@@ -32,9 +32,9 @@
 
 					<div class="input-group mb-3 marg mx-auto" >
 						<div class="input-group-prepend">
-						    <span class="input-group-text" id="basic-addon1">Age</span>
+						    <span class="input-group-text" id="basic-addon1">Date of Birth</span>
 						</div>
-						<input type="text" class="form-control" id = "age" placeholder="Age" aria-label="Age" aria-describedby="basic-addon1">
+						<input type="text" class="form-control" id = "age" placeholder="yyyy-mm-dd" aria-label="Age" aria-describedby="basic-addon1">
 					</div> 
 
 					<div class="input-group mb-3 marg mx-auto" >
@@ -50,13 +50,27 @@
 						  </div>
 						  <input type="text" class="form-control" id = "phone" placeholder="+91" aria-label="PhoneNo" aria-describedby="basic-addon1">
 					</div>
-				    	<button type="button" class="btn btn-dark" onclick="insdonor()" > Submit </button></a>
+
+					<div class="input-group mb-3 marg  mx-auto" >
+						  <div class="input-group-prepend">
+						    <span class="input-group-text" id="basic-addon1">Blood Group</span>
+						  </div>
+						  <input type="text" class="form-control" id = "bg" placeholder="Blood Group" aria-label="bg" aria-describedby="basic-addon1">
+					</div>
+					<div class="input-group mb-3 marg  mx-auto" >
+						  <div class="input-group-prepend">
+						    <span class="input-group-text" id="basic-addon1">Weight</span>
+						  </div>
+						  <input type="text" class="form-control" id="weight" placeholder="in kgs" aria-label="Weight" aria-describedby="basic-addon1">
+					</div>
+<!-- 				    	<button type="button" class="btn btn-dark" onclick="insdonor()" > Submit </button></a>
+ -->
 							
 				</div>
 			</div>
 			
 			<div class="card card-round  border-danger mb-3 mx-auto mt-5" style="max-width: 50%;">
-				<div class="card-header text-center" id = "h3"><h4>Enter donor's blood information</h4></div>
+				<div class="card-header text-center" id = "h3"><h4>Enter blood information</h4></div>
 				<div class="card-body text-primary text-center mx-auto">
 					<div class="input-group mb-3 marg  mx-auto" >
 						  	<div class="input-group-prepend">
@@ -64,12 +78,7 @@
 						    </div>
 						    <input type="text" class="form-control" id = "bid" placeholder="BloodID" aria-label="blood" aria-describedby="basic-addon1">
 					</div>
-					<div class="input-group mb-3 marg  mx-auto" >
-						  <div class="input-group-prepend">
-						    <span class="input-group-text" id="basic-addon1">Blood Group</span>
-						  </div>
-						  <input type="text" class="form-control" id = "bg" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
-					</div>
+
 
 					<div class="input-group mb-3 marg  mx-auto" >
 						<div class="input-group-prepend">
@@ -79,19 +88,26 @@
 					</div>
 
 					<div class="input-group mb-3 marg  mx-auto" >
-						<div class="input-group-prepend">
 
-						  	<span class="input-group-text" id="basic-addon1">Cholestrol</span>
+							<div class="input-group-prepend">
+						       <span class="input-group-text" id="basic-addon1">White Blood Cell Count</span>
+							</div>
+						  	<input type="text" class="form-control" id = "wbc" placeholder="WBC per microlitre" aria-label="wbc" aria-describedby="basic-addon1">
 						</div>
-						<input type="text" class="form-control" id = "chol" placeholder="mg/dL" aria-label="Cholestrol" aria-describedby="basic-addon1">
+						
+						<div class="input-group mb-3 marg  mx-auto" >
+						  	<div class="input-group-prepend">
+						  	   <span class="input-group-text" id="basic-addon1">Red Blood Cell Count</span>
+						  	</div>
+						  	<input type="text" class="form-control"  id = "rbc" placeholder="Cells per litre" aria-label="rbc" aria-describedby="basic-addon1">
+						</div>
+
+						<div class="input-group mb-3 marg  mx-auto" >
+						    <div class="input-group-prepend">
+						    	<span class="input-group-text" id="basic-addon1">Platelet Count</span>
+						  	</div>
+						 	 <input type="text" class="form-control" id = "pc" placeholder="Platelets per microlitre" aria-label="pc" aria-describedby="basic-addon1">
 						</div> 
-
-					<div class="input-group mb-3 marg  mx-auto" >
-						<div class="input-group-prepend">
-						  	<span class="input-group-text" id="basic-addon1">Amount</span>
-						</div>
-						<input type="text" class="form-control" id = "amt" placeholder="in millilitres" aria-label="Amount" aria-describedby="basic-addon1">
-					</div>
 
 					<div class="input-group mb-3 marg  mx-auto" >						  
 						<div class="input-group-prepend">
@@ -104,41 +120,32 @@
 			
 
 
-			<div class="card card-round  border-danger mb-3 mx-auto mt-5" style="max-width: 50%;">
-				<div class="card-header text-center" id = "h3"><h4>Enter donor's health report	</h4></div>
+			<!-- <div class="card card-round  border-danger mb-3 mx-auto mt-5" style="max-width: 50%;">
+				<div class="card-header text-center" id = "h3"><h4>Enter additional blood information</h4></div>
 				<div class="card-body text-primary text-center mx-auto">
 					<div class="input-group mb-3 marg  mx-auto" >
+			  			<div class="input-group-prepend">
+						       <span class="input-group-text" id="basic-addon1">White Blood Cell Count</span>
+							</div>
+						  	<input type="text" class="form-control" id = "wbc" placeholder="WBC per microlitre" aria-label="wbc" aria-describedby="basic-addon1">
+						</div>
+						
+						<div class="input-group mb-3 marg  mx-auto" >
+						  	<div class="input-group-prepend">
+						  	   <span class="input-group-text" id="basic-addon1">Red Blood Cell Count</span>
+						  	</div>
+						  	<input type="text" class="form-control"  id = "rbc" placeholder="Cells per litre" aria-label="rbc" aria-describedby="basic-addon1">
+						</div>
 
-
-			  <div class="input-group-prepend">
-			    <span class="input-group-text" id="basic-addon1">Body Temperature</span>
-			  </div>
-			  <input type="text" class="form-control" id = "temp" placeholder="in Celsius" aria-label="Temperature" aria-describedby="basic-addon1">
+						<div class="input-group mb-3 marg  mx-auto" >
+						    <div class="input-group-prepend">
+						    	<span class="input-group-text" id="basic-addon1">Platelet Count</span>
+						  	</div>
+						 	 <input type="text" class="form-control" id = "pc" placeholder="Platelets per microlitre" aria-label="pc" aria-describedby="basic-addon1">
+						</div> 
+				</div>
 			</div>
-			
-					<div class="input-group mb-3 marg  mx-auto" >
-			  <div class="input-group-prepend">
-			    <span class="input-group-text" id="basic-addon1">Blood Pressure</span>
-			  </div>
-			  <input type="text" class="form-control"  id = "bp" placeholder="mm Hg" aria-label="BP" aria-describedby="basic-addon1">
-			</div>
-
-					<div class="input-group mb-3 marg  mx-auto" >
-			  <div class="input-group-prepend">
-			    <span class="input-group-text" id="basic-addon1">Pulse Rate</span>
-			  </div>
-			  <input type="text" class="form-control" id = "pulse" placeholder="bpm" aria-label="Pulse" aria-describedby="basic-addon1">
-			</div> 
-
-					<div class="input-group mb-3 marg  mx-auto" >
-			  <div class="input-group-prepend">
-			    <span class="input-group-text" id="basic-addon1">Weight</span>
-			  </div>
-			  <input type="text" class="form-control" id="weight" placeholder="in kgs" aria-label="Weight" aria-describedby="basic-addon1">
-			</div>
-		</div>
-	</div>
-
+ -->
 		
 			<div class="card card-round  border-danger mb-3 mx-auto mt-5" style="max-width: 50%;">
 				<div class="card-header text-center" id = "h3"><h4>Enter branch information</h4></div>
@@ -156,14 +163,11 @@
 						  </div>
 						  <input type="text" class="form-control" id = "brid" placeholder="Branch ID" aria-label="branch id" aria-describedby="basic-addon1">
 						</div>
-					</div>
-				
-
-
+				</div>
+		</div>
 	</form>
-</div>
 
-	<div class="text-center"><button type="button" class="btn btn-dark" style="margin-bottom: 15px;">Submit</button></div>
+	<div class="text-center"><button type="button" class="btn btn-dark" onclick = "insdonor()" style="margin-bottom: 15px;">Submit</button></div>
 
 	<script>
 	var url = "{{url_for('static',filename='javascript/jquery-3.3.1.min.js')}}";
@@ -175,4 +179,4 @@
 	</script>
 
 <!-- </body>
-</html> -->
+</html>

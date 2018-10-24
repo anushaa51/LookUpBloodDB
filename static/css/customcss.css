@@ -8,7 +8,7 @@
   src : url('PT_Sans-Web-Regular.ttf');
 }
 .btn-round{
-border-radius: 30px;
+border-radius: 25px;
 }
 .card-round{
   border-radius: 45px;
@@ -84,6 +84,12 @@ input:hover{
 .mt-10{
   margin-top: 80px;
 } 
+.mt-13{
+  margin-top: 100px;
+}
+.mt-15 {
+  margin-top: 120px;
+}
 #h1 {
   background-color: rgba(77,191,288,0.7);
 

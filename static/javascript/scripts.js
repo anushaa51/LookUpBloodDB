@@ -37,14 +37,18 @@ $(".inner").click(function(e){ //which dropdown option selected
 
 
 function insdonor(){ 
-	var params = [$("#did")[0].value,$("#name")[0].value, $("#age")[0].value,$("#gender")[0].value,$("#phone")[0].value] //
-	send("insdonor",params)
+	var did = $("#did")[0].value;
+	var bid = $("#bid")[0].value;
+	var pdonor = [$("#did")[0].value,$("#name")[0].value, $("#age")[0].value,$("#gender")[0].value,$("#bg")[0].value,$("#phone")[0].value,$("#weight")[0].value] //
+	var blood = [$("#bid")[0].value,$("#haemo")[0].value,$("#wbc")[0].value,$("#rbc")[0].value,$("#pc")[0].value,$("#date")[0].value]
+	var orgb = [$("#oid")[0].value,$("#brid")[0].value]
+	send("insdonor",pdonor,blood,orgb)
 
 }
 
 
 
-function send(query,params){
+function send(query,pdonor,blood,orgb){
 	var qtype,d;
 
 	if(query==="insdonor"){
@@ -52,11 +56,21 @@ function send(query,params){
 		d = {
 			'username': loginglobal.username,
 			'password': loginglobal.password,
-			'did':params[0],
-			'name':params[1],
-			'age':params[2],
-			'gender':params[3],
-			'phone':params[4]
+			'did':pdonor[0],
+			'name':pdonor[1],
+			'age':pdonor[2],
+			'gender':pdonor[3],
+			'bg':pdonor[4],
+			'phone':pdonor[5],
+			'weight':pdonor[6],
+			'bid':blood[0],
+			'haemo':blood[1],
+			'wbc':blood[2],
+			'rbc':blood[3],
+			'pc':blood[4],
+			'date':blood[5],
+			'oid':orgb[0],
+			'brid':orgb[1]
 			};
 		}
 	
@@ -65,7 +79,7 @@ function send(query,params){
 		d = {
 			'username': loginglobal.username,
 			'password': loginglobal.password,			
-			'cond':params
+			'cond':pdonor
 		};
 	}
 	$.ajax({
