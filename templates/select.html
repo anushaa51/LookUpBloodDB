@@ -1,83 +1,44 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-	<title>Blood Donation</title>
-
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}"> 
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}"> 
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/customcss.css') }}"> 
-	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/bootstrap.css"> 
-	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/all.css">
-	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/customcss.css">
-</head>
-<body> -->
-	<div class = "font1">
-<h3 class="text-center"> Choose required option</h3>
-<br>
-<div class = "card-deck justify-content-center">
-	<div class="card border-primary mb-3 text-center card-round" style="max-width: 18rem;">
-		<div class="card-header" id = "h1">Insert</div>
-		<div class="card-body text-primary">
-		  	<div class="btn-group-vertical" role="group" aria-label="Basic example">
-		  		<button class="btn btn-outline-info inner btn-round" type="button" id ="insdonor">Donor </button>
-				<button class="btn btn-outline-info inner btn-round" type="button" id ="insorg">Organisation/Branch</button>
+<div class = "font1">
+	<h3 class="text-center"> Choose required option</h3>
+	<br>
+	<div class = "card-deck justify-content-center">
+		<div class="card border-primary mb-3 text-center card-round" style="max-width: 18rem;">
+			<div class="card-header" id = "h1">Insert</div>
+			<div class="card-body text-primary">
+			  	<div class="btn-group-vertical" role="group" aria-label="Basic example">
+			  		<button class="btn btn-outline-info inner btn-round" type="button" id ="insdonor">Donor </button>
+					<button class="btn btn-outline-info inner btn-round" type="button" id ="insorg">Organisation/Branch</button>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="card border-success mb-3 text-center card-round" style="max-width: 18rem;">
-		<div class="card-header" id = "h2">Update</div>
-		<div class="card-body text-primary">
-			<div class="btn-group-vertical" role="group" aria-label="Basic example">
-				<button class="btn btn-outline-success inner btn-round" type="button" id = "upddonor">Donor </button>
-				<button class="btn btn-outline-success inner btn-round" type="button" id ="updorg">Organisation/Branch</button>
+		<div class="card border-success mb-3 text-center card-round" style="max-width: 18rem;">
+			<div class="card-header" id = "h2">Update</div>
+			<div class="card-body text-primary">
+				<div class="btn-group-vertical" role="group" aria-label="Basic example">
+					<button class="btn btn-outline-success inner btn-round" type="button" id = "upddonor">Donor </button>
+					<button class="btn btn-outline-success inner btn-round" type="button" id ="updorg">Organisation/Branch</button>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="card border-danger mb-3 text-center card-round" style="max-width: 18rem;">
-		<div class="card-header" id = "h3">Delete</div>
-		<div class="card-body text-primary">
-			<div class="btn-group-vertical" role="group" aria-label="Basic example">
-				<button class="btn btn-outline-danger inner btn-round" type="button" id = "deldonor">Donor </button>
-				<button class="btn btn-outline-danger inner btn-round" type="button" id = "delorg">Organisation/Branch</button>
+		<div class="card border-danger mb-3 text-center card-round" style="max-width: 18rem;">
+			<div class="card-header" id = "h3">Delete</div>
+			<div class="card-body text-primary">
+				<div class="btn-group-vertical" role="group" aria-label="Basic example">
+					<button class="btn btn-outline-danger inner btn-round" type="button" id = "deldonor">Donor </button>
+	<!-- 				<button class="btn btn-outline-danger inner btn-round" type="button" id = "delorg">Organisation/Branch</button>
+	 -->			</div>
 			</div>
 		</div>
-	</div>
-	<div class="card border-dark mb-3 text-center card-round" style="max-width: 18rem;">
-		<div class="card-header" id = "h4">View</div>
-		<div class="card-body text-primary">
-			<div class="btn-group-vertical" role="group" aria-label="Basic example">
-				<button class="btn btn-outline-dark inner btn-round" type="button" id = "viewdonor">Donor </button>
-				<button class="btn btn-outline-dark inner btn-round" type="button" id = "vieworg">Organisation/Branch</button>
+		<div class="card border-dark mb-3 text-center card-round" style="max-width: 18rem;">
+			<div class="card-header" id = "h4">View</div>
+			<div class="card-body text-primary">
+				<div class="btn-group-vertical" role="group" aria-label="Basic example">
+					<button class="btn btn-outline-dark inner btn-round" type="button" id = "viewdonor">Donor </button>
+					<button class="btn btn-outline-dark inner btn-round" type="button" id = "vieworg">Organisation/Branch</button>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-</div>
-
-
-
-
-		
-
-
-<script>
-var url = "{{url_for('static',filename='javascript/scripts.js')}}";
-$.getScript(url);
-</script>
-
-<script>
-var url = "{{url_for('static',filename='javascript/jquery-3.3.1.min.js')}}";
-$.getScript(url);
-</script>
-
-    
-	<!-- <script type="text/javascript" src = "{{url_for('static',filename='javascript/jquery-3.3.1.min.js')}}"></script>
-    <script type="text/javascript" src="{{url_for('static',filename='javascript/scripts.js')}}"></script>
-        <script type="text/javascript" src = "file:///home/anusha/blooddonation/LookUpBloodDB/static/javascript/jquery-3.3.1.min.js"></script>
-
-    <script type="text/javascript" src = "file:///home/anusha/blooddonation/LookUpBloodDB/static/javascript/scripts.js"></script>
-  -->
-<!-- </body>
-</html> -->

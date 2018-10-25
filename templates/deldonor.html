@@ -1,27 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Blood Donation</title>
-
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}"> 
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}"> 
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/customcss.css') }}"> 
-	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/bootstrap.css"> 
-	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/all.css">
-	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/customcss.css">
-</head>
-<body >
-
-<div class = "font2">
-	<h3>Double click on donor to delete from database</h3>
+<div class = "font2 text-center">
+	<button class="btn  btn-round btn-lg font1 mb-4" type="button" id ="h3">Double click on donor to delete from database</button>
+<!-- 			<button type="button" class="btn btn-warning btn-lg btn-round mt-3 mb-2" onclick="location.href='./1'">Try Again</button>
+ -->
 	<table class="table table-hover" id = "tablee" onclick="addRow(this.id)">
 		<thead>
 	    <tr>
-	      <th scope="col">ID</th>
-	      <th scope="col">Full Name</th>
-	      <th scope="col">Age</th>
-	      <th scope="col">Gender</th>
-	      <th scope="col">Phone Number</th>
+	      <th scope="col">Blood ID</th>
+	      <th scope="col">Haemo</th>
+	      <th scope="col">WBC</th>
+	      <th scope="col">RBC</th>
+	      <th scope="col">Platelet</th>
+	      <th scope="col">Date</th>
+	      <th scope="col">Donor ID</th>
+	      <th scope="col">Org ID</th>
+	      <th scope="col">Branch ID</th>
 
 	    </tr>
 	  </thead>
@@ -36,23 +28,4 @@
 	  </tbody>
 	</table>
 </div>
-	<script>
-	var url = "{{url_for('static',filename='javascript/scripts.js')}}";
-	$.getScript(url);
-	</script>
-
-	<script>
-	var url = "{{url_for('static',filename='javascript/jquery-3.3.1.min.js')}}";
-	$.getScript(url);
-	</script>
-
-    
-	<!-- <script type="text/javascript" src = "{{url_for('static',filename='javascript/jquery-3.3.1.min.js')}}"></script>
-    <script type="text/javascript" src="{{url_for('static',filename='javascript/scripts.js')}}"></script>
-        <script type="text/javascript" src = "file:///home/anusha/blooddonation/LookUpBloodDB/static/javascript/jquery-3.3.1.min.js"></script>
-
-    <script type="text/javascript" src = "file:///home/anusha/blooddonation/LookUpBloodDB/static/javascript/scripts.js"></script>
-  -->
-
-</body>
-</html>
+	

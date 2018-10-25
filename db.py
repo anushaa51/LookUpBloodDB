@@ -25,7 +25,35 @@ def login():
     return render_template('fail.html')
 
 
-#@app.route("")
+@app.route("/1")
+def home():
+  return render_template('select.html')
+
+@app.route("/upddonor",methods = ['POST'])
+def upddonor():
+    # username=request.form.get('username')
+    # password=request.form.get('password')
+    if request.form.get('type') == "name":
+        val = [request.form.get('name'),request.form.get('did')]
+        sql="UPDATE donor set name = ? WHERE d_id =  ?"
+
+    elif request.form.get('type') == "phone":
+        val = [request.form.get('phone'),request.form.get('did')]
+
+        sql="UPDATE donor set phone = ? WHERE d_id =  ?"
+
+
+    elif request.form.get('type') == "weight":
+        val = [request.form.get('weight'),request.form.get('did')]
+
+        sql="UPDATE donor set weight = ? WHERE d_id =  ?"
+
+    elif request.form.get('type') == "org":
+        val = [request.form.get('phone'),request.form.get('oid'),request.form.get('brid')]
+
+        sql="UPDATE branch set br_phone = ? WHERE o_id = ? and br_id = ?"
+    
+    return query('root','antechi',sql,val)
 
 
 @app.route("/select",methods = ['POST'])
@@ -47,7 +75,7 @@ def select():
                                            password='antechi')
             if conobj.is_connected():
                 cursor = conobj.cursor()
-                query = "SELECT * from donor natural join blood"
+                query = "SELECT * from blood natural join blood_br"
                 cursor.execute(query)
 
                 data = cursor.fetchall()
@@ -55,12 +83,12 @@ def select():
                 return render_template("deldonor.html", data=data)
 
         finally: conobj.close()
-  elif option == 'delorg':
-      return render_template('delorg.html')
+  # elif option == 'delorg':
+  #     return render_template('delorg.html')
   elif option == 'viewdonor':
-      return render_template('viewwdonor.html')
+      return render_template('viewseldonor.html')
   elif option == 'vieworg':
-      return render_template('vieworg.html')
+      return render_template('viewselorg.html')
   else: return None
 
 
@@ -95,7 +123,7 @@ def insert():
 def dele():
     username=request.form.get('username')
     password=request.form.get('password')
-    sql="DELETE FROM donor WHERE did = "+request.form.get('cond')
+    sql="DELETE FROM blood WHERE b_id = "+ '"' + request.form.get('bid') + '"'
     val=None
     return query(username,password,sql,val)
 
@@ -107,15 +135,15 @@ def query(username,password,sql,val):
                                        user=username,
                                        password=password)
         if conobj.is_connected():
-            cursor = conobj.cursor()
-            cursor.executemany(sql,val)
+            cursor = conobj.cursor(prepared=True)
+            cursor.execute(sql,val)
             conobj.commit()
     finally: conobj.close()
     return "a"
 
 
-@app.route('/viewdonor', methods = ['POST'])       
-def viewdonor():
+@app.route('/viewallblood', methods = ['POST'])       
+def viewallblood():
     try:
         conobj = mysql.connector.connect(host='localhost',
                                        database='db',
@@ -132,6 +160,65 @@ def viewdonor():
 
     finally: conobj.close()
     return "a"
+
+@app.route('/viewallorg', methods = ['POST'])       
+def viewallorg():
+    try:
+        conobj = mysql.connector.connect(host='localhost',
+                                       database='db',
+                                       user='root',
+                                       password='antechi')
+        if conobj.is_connected():
+            cursor = conobj.cursor()
+            query = "SELECT * from organization"
+            cursor.execute(query)
+
+            data = cursor.fetchall()
+
+            return render_template("viewallorg.html", data=data)
+
+    finally: conobj.close()
+    return "a"
+
+
+@app.route('/viewanorg',methods = ['POST'])
+def viewanorg():
+    try:
+        conobj = mysql.connector.connect(host='localhost',
+                                       database='db',
+                                       user='root',
+                                       password='antechi')
+        if conobj.is_connected():
+            cursor = conobj.cursor()
+            query = "SELECT org_name,br_id,address,br_phone from organization o natural join branch where o.o_id = " + '"' + request.form.get('oid') + '"'
+            cursor.execute(query)
+
+            data = cursor.fetchall()
+
+            return render_template("viewanorg.html", data=data)
+
+    finally: conobj.close()
+    return "a"
+
+@app.route('/viewbybg',methods = ['POST'])
+def viewbybg():
+    try:
+        conobj = mysql.connector.connect(host='localhost',
+                                       database='db',
+                                       user='root',
+                                       password='antechi')
+        if conobj.is_connected():
+            cursor = conobj.cursor()            
+            query = "SELECT b_group,br.o_id,br.br_id,address,br_phone,dist from donor d, blood b,blood_br bbr,branch br,distance di where h_id = " + "'" + request.form.get('hid') + "'" + " and b_group = " + "'" + request.form.get('bg') + "'" + " and d.d_id = b.d_id and b.b_id = bbr.b_id and bbr.o_id = br.o_id and br.o_id = di.o_id and bbr.br_id = br.br_id and br.br_id = di.br_id order by (dist)"
+            cursor.execute(query)
+
+            data = cursor.fetchall()
+
+            return render_template("viewbybg.html", data=data)
+
+    finally: conobj.close()
+    return "a"
+
 
 
 if __name__ == "__main__":

@@ -76,10 +76,11 @@ function send(query,pdonor,blood,orgb){
 	
 	if(query==="del"){
 		qtype = "/dele";
+		console.log("2",pdonor);
 		d = {
 			'username': loginglobal.username,
 			'password': loginglobal.password,			
-			'cond':pdonor
+			'bid':pdonor
 		};
 	}
 	$.ajax({
@@ -89,13 +90,93 @@ function send(query,pdonor,blood,orgb){
 	});
 }
 
-function viewdonor(){
+function viewallblood(){
 	$.ajax({
 		type: "POST",
-		url: "/viewdonor",
+		url: "/viewallblood",
 		success: function(response){
 		 				$('#replace').html(response); //replace html id 'response'
 		 			}
+	});
+}
+function viewallorg(){
+	$.ajax({
+		type: "POST",
+		url: "/viewallorg",
+		success: function(response){
+		 				$('#replace').html(response); //replace html id 'response'
+		 			}
+	});
+}
+
+function viewanorg(){
+	d = {
+		'oid':$("#oid")[0].value
+	};
+	$.ajax({
+		type: "POST",
+		url: "/viewanorg",
+		data: d,
+		success: function(response){
+		 				$('#replace').html(response); //replace html id 'response'
+		 			}
+	});
+
+}
+
+function viewbybg(){
+	d = {
+		'bg': $("#bg")[0].value,
+		'hid': $("#hid")[0].value
+	};
+	$.ajax({
+		type: "POST",
+		url: "/viewbybg",
+		data: d,
+		success: function(response){
+		 				$('#replace').html(response); //replace html id 'response'
+		 			}
+	});
+}
+
+function upddonor(id){
+	if(id == 'updname'){
+		console.log($("#name")[0].value,$("#did1")[0].value)
+		d = {
+			'type': "name",
+			'name':$("#name")[0].value,
+			'did':$("#did1")[0].value
+		};
+	}
+	else if(id == 'updphone')
+		d = {
+			'type': "phone",
+			'phone':$("#phone")[0].value,
+			'did':$("#did2")[0].value
+		};
+	else if(id == 'updweight')
+		d = {
+			'type': "weight",
+			'weight':$("#weight")[0].value,
+			'did':$("#did3")[0].value
+		};
+	else if(id == 'org')
+		d = {
+			'type': "org",
+			'oid':$("#oid")[0].value,
+			'brid':$("#brid")[0].value,
+			'phone':$("#phone")[0].value
+
+		};
+
+	$.ajax({
+		type: "POST",
+		url: "/upddonor",
+		data: d
+		// success: function(response){
+		//  				$('#replace').html(response); //replace html id 'response'
+
+		// }
 	});
 }
 
@@ -107,12 +188,12 @@ function viewdonor(){
 // }
 
 function dele(id){
-	var cond = Number($('#' + id).children('td:first').text());
+	var bid = $('#' + id).children('td:first').text();
 	$('#' + id).fadeOut('slow', function(here){ 
             $(this).remove();                    
         });    
-	
-	send("del",cond);
+	console.log("1",bid);
+	send("del",bid,null,null);
 }
 
 
@@ -122,4 +203,3 @@ function addRow() {
   	 $(this).attr("ondblclick","dele(this.id)")
 	});
 }	
-

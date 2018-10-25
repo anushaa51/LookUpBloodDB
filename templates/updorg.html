@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Blood Donation</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}"> 
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}"> 
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/customcss.css') }}"> 
-	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/bootstrap.css"> 
- 	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/all.css">
- 	<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/customcss.css"> 
-</head>
-<body class = "font2"> 
+
 	
-<div class="container ">
+<div class="container font 2">
   <div class="row justify-content-md-center">
    <!--  <div class="col-md-5">
 		<button type="button" class="btn btn-info dropdown-toggle btn-lg btn-block " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Address</button>
@@ -54,45 +43,27 @@
 				  <div class="input-group-prepend">
 				    <span class="input-group-text"  >Org ID</span>
 				  </div>
-				  <input type="text" class="form-control" placeholder="OID" aria-label="OID" aria-describedby="basic-addon1">
+				  <input type="text" class="form-control" id = "oid" placeholder="OID" aria-label="OID" aria-describedby="basic-addon1">
 			</div>
 			<div class="input-group dropdown-item">
 				  <div class="input-group-prepend">
 				    <span class="input-group-text" >Branch ID</span>
 				  </div>
-				  <input type="text" class="form-control" placeholder="Branch ID" aria-label="Brid" aria-describedby="basic-addon1">
+				  <input type="text" class="form-control" id = "brid" placeholder="Branch ID" aria-label="Brid" aria-describedby="basic-addon1">
 			</div>
 		    <div class="input-group dropdown-item">
 				  <div class="input-group-prepend">
 				    <span class="input-group-text"  >New Phone</span>
 				  </div>
-				  <input type="text" class="form-control" placeholder="Phone Number" aria-label="phone" aria-describedby="basic-addon1">
+				  <input type="text" class="form-control" id = "phone" placeholder="Phone Number" aria-label="phone" aria-describedby="basic-addon1">
 			</div>
 			<div class = "text-center dropdown-item">
-	    			<button type="button" class="btn btn-sm btn-dark btn-round"> Update </button></a>
+	    			<button type="button" class="btn btn-sm btn-dark btn-round" id = "org" onclick="upddonor(this.id)"> Update </button>
 			</div>
 		</div>
 	</div>
 
-</div>
+
 
   </div>
 </div>
-
-
-<!-- 	<script type="text/javascript" src = "{{url_for('static',filename='javascript/bootstrap.bundle.min.js')}}"></script>
-
-     <script type="text/javascript" src = "file:///home/anusha/blooddonation/LookUpBloodDB/static/javascript/jquery-3.3.1.min.js"></script>
-
-    <script type="text/javascript" src = "file:///home/anusha/blooddonation/LookUpBloodDB/static/javascript/bootstrap.bundle.min.js"></script>
-
-
-	<script type="text/javascript" src = "{{url_for('static',filename='javascript/jquery-3.3.1.min.js')}}"></script>
-    <script type="text/javascript" src="{{url_for('static',filename='javascript/scripts.js')}}"></script>
-     <script type="text/javascript" src = "file:///home/anusha/blooddonation/LookUpBloodDB/static/javascript/scripts.js"></script>
-    <script type="text/javascript" src = "file:///home/anusha/blooddonation/LookUpBloodDB/static/javascript/jquery-3.3.1.min.js"></script>
- -->
-
-</body>
-</html>
-

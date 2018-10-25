@@ -1,0 +1,36 @@
+
+<div class="font2 text-center">
+	<button class="btn  btn-round btn-lg font1 mb-3" type="button" id ="h3">Selection Categories</button>
+
+
+	<div class="container">
+  		<div class="row mt-3 justify-content-md-center">
+    		<div class="col-md-5">
+    			<button type = "button" class="btn btn-info btn-lg btn-block " onclick="viewallblood()">View All</button>
+    		</div>
+
+    		<div class="col-md-5">
+				<button type="button" class="btn btn-info dropdown-toggle btn-lg btn-block " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> By Blood Group</button>
+				<div class="dropdown-menu">
+				    <div class="input-group mb-3 dropdown-item">
+						  <div class="input-group-prepend">
+						    <span class="input-group-text">Blood Group</span>
+						  </div>
+						  <input type="text" class="form-control" placeholder="DID" aria-label="DID" aria-describedby="basic-addon1" id = "bg">
+					</div>
+				    <div class="input-group mb-3 dropdown-item">
+						  <div class="input-group-prepend">
+						    <span class="input-group-text" >Hospital ID</span>
+						  </div>
+						  <input type="text" class="form-control" placeholder="Full Name" aria-label="FullName" aria-describedby="basic-addon1" id = "hid">
+					</div>
+					<div class = "text-center dropdown-item">
+			    			<button type="button" class="btn btn-dark btn-round" onclick="viewbybg()"> Search </button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+

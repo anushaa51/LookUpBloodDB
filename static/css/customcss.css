@@ -90,6 +90,9 @@ input:hover{
 .mt-15 {
   margin-top: 120px;
 }
+.mt-20 {
+  margin-top: 150px;
+}
 #h1 {
   background-color: rgba(77,191,288,0.7);
 
@@ -107,4 +110,13 @@ input:hover{
 }
 #h4 {
   background-color: rgba(76, 70, 70,0.5);
+}
+
+.vl {
+    border-left: 2px solid black;
+    height: 500px;
+    position: absolute;
+    left: 50%;
+    margin-left: -3px;
+    top: 0;
 }

@@ -1,0 +1,24 @@
+<div class = "font2 text-center">
+  <button class="btn  btn-round btn-lg font1 mb-4" type="button" id ="h3">Organization Information</button>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Organization Name</th>
+        <th scope="col">Branch ID</th>
+        <th scope="col">Address</th>
+        <th scope="col">Phone Number</th>
+
+      </tr>
+    </thead>
+    <tbody >
+      {% for row in data %}
+            <tr> 
+            {% for d in row %}
+                <td>{{ d }}</td>
+            {% endfor %}
+            </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
