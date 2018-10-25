@@ -79,7 +79,7 @@ def select():
                 cursor.execute(query)
 
                 data = cursor.fetchall()
-
+                conobj.close()
                 return render_template("deldonor.html", data=data)
 
         finally: conobj.close()
@@ -135,7 +135,7 @@ def query(username,password,sql,val):
                                        user=username,
                                        password=password)
         if conobj.is_connected():
-            cursor = conobj.cursor(prepared=True)
+            cursor = conobj.cursor()
             cursor.execute(sql,val)
             conobj.commit()
     finally: conobj.close()

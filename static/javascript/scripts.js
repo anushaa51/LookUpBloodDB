@@ -1,6 +1,18 @@
 var loginglobal;
 var row_id = 1;
 
+function clicky(id) { //which dropdown option selected
+    var option = {'id':id};
+    $.ajax({
+		async:true,
+		type: "POST",
+		url: "/select", //name of python method
+		data: option,
+		success: function(response){
+		 				$('#replace').html(response);
+		 			}
+		});
+}
 
 function login(){
 	var login = {'username':$("#username")[0].value, //get username and password values from webpage via its id and create login object
@@ -15,6 +27,7 @@ function login(){
 		data: login,
 		success: function(response){
 		 				$('#replace').html(response); //replace html id 'response'
+		 				$('button').addClass('inner');
 		 			}
 		});
 
@@ -22,18 +35,7 @@ function login(){
 
 
 
-$(".inner").click(function(e){ //which dropdown option selected
-    var option = {'id':e.target.id}
-    $.ajax({
-		async:true,
-		type: "POST",
-		url: "/select", //name of python method
-		data: option,
-		success: function(response){
-		 				$('#replace').html(response);
-		 			}
-		});
-});
+
 
 
 function insdonor(){ 
@@ -99,6 +101,7 @@ function viewallblood(){
 		 			}
 	});
 }
+
 function viewallorg(){
 	$.ajax({
 		type: "POST",
