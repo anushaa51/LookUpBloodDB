@@ -19,7 +19,15 @@ input:hover{
   outline: 0 none;
 }
 
-#username,#password {
+#username,#password{
+    margin-top: 5%;
+    margin-bottom: 10%;
+    border-radius: 25px;
+    text-align: inherit;
+    font-size: 20px;
+    width: 100%;
+    border-width: 2px;}
+/*#password {
     margin-top: 5%;
     margin-bottom: 10%;
     border-radius: 25px;
@@ -27,7 +35,7 @@ input:hover{
     text-align: inherit;
     font-size: 20px;
     width: 500px;
-}
+}*/
 #username:hover,#password:hover{
     border-color:  rgba(182,50,50,.8);
   box-shadow: 0 0px 0px rgba(182,50,50,.8) inset, 0 0 8px rgba(182,50,50,.8);
