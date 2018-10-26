@@ -19,6 +19,12 @@ input:hover{
   outline: 0 none;
 }
 
+#logout {
+float: right;
+ }
+#home {
+  float: left;
+}
 #username,#password{
     margin-top: 5%;
     margin-bottom: 10%;
@@ -27,15 +33,7 @@ input:hover{
     font-size: 20px;
     width: 100%;
     border-width: 2px;}
-/*#password {
-    margin-top: 5%;
-    margin-bottom: 10%;
-    border-radius: 25px;
-    border: 1px solid #e07781;
-    text-align: inherit;
-    font-size: 20px;
-    width: 500px;
-}*/
+
 #username:hover,#password:hover{
     border-color:  rgba(182,50,50,.8);
   box-shadow: 0 0px 0px rgba(182,50,50,.8) inset, 0 0 8px rgba(182,50,50,.8);
@@ -100,6 +98,9 @@ input:hover{
 }
 .mt-20 {
   margin-top: 150px;
+}
+.mt-200 {
+  margin-top: 200px;
 }
 #h1 {
   background-color: rgba(77,191,288,0.7);

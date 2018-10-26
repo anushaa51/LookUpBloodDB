@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Blood Donation</title>
+	<title>
+			<span class="drop">
+				<i class="fas fa-tint fa-4x"></i>
+			</span>
+		Blood Donation</title>
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}"> 
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}"> 
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/customcss.css') }}"> 
 
 </head>
 <body class = "font2"> 
-	<div class="jumbotron font1">
+	<div class="jumbotron font1 card-round">
 		<div class="text-center">
 			<span class="drop">
 				<i class="fas fa-tint fa-4x"></i>
@@ -17,7 +21,7 @@
 	  	</div>
   	
   		<hr class="my-4 text-center">
-  		<p class="text-center">Database that permits an authorised user to insert, update, delete and view data.</p>
+  		<p class="text-center">Database for maintaining and locating ???</p>
   		
 	</div>
 	<div id = "replace">
@@ -34,7 +38,7 @@
 				</form>
 		  
 	    		<div class = "text-center mar">
-	    			<button type="button" class="btn btn-lg btn-dark btn-round" onclick="login()" > Login </button>
+	    			<button type="button" class="btn btn-lg btn-dark btn-round" id = "login" onclick="login(this.id)" > Login </button>
 				</div>
 				
 			</div>

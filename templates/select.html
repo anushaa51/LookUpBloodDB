@@ -1,45 +1,69 @@
-<div class = "font1">
-	<h3 class="text-center"> Choose required option</h3>
-	<br>
-	<div class = "card-deck justify-content-center">
-		<div class="card border-primary mb-3 text-center card-round" style="max-width: 18rem;">
-			<div class="card-header" id = "h1">Insert</div>
-			<div class="card-body text-primary">
-			  	<div class="btn-group-vertical" role="group" aria-label="Basic example">
-			  		<button class="btn btn-outline-info  btn-round" type="button" id ="insdonor" onclick="clicky(this.id)">Donor </button>
-					<button class="btn btn-outline-info  btn-round" type="button" id ="insorg" onclick="clicky(this.id)">Organisation/Branch</button>
-				</div>
-			</div>
-		</div>
 
-		<div class="card border-success mb-3 text-center card-round" style="max-width: 18rem;">
-			<div class="card-header" id = "h2">Update</div>
-			<div class="card-body text-primary">
-				<div class="btn-group-vertical" role="group" aria-label="Basic example">
-					<button class="btn btn-outline-success  btn-round" type="button" id = "upddonor" onclick="clicky(this.id)">Donor </button>
-					<button class="btn btn-outline-success  btn-round" type="button" id ="updorg" onclick="clicky(this.id)">Organisation/Branch</button>
-				</div>
-			</div>
-		</div>
+	<div class="jumbotron font1 card-round">
+		<div class="text-center">
+			<span class="drop">
+				<i class="fas fa-tint fa-4x"></i>
+			</span>
+	  		<h1 class="display-4 inline">Blood Bank Database</h1> 
+	  	</div>
+  	
+  		<hr class="my-4 text-center">
+  		<p class="text-center">Database for maintaining and locating ???</p>
+ 
+  			
+  				<button class = "btn-round" id = "home" onclick="login(this.id)"><i class="fas fa-home fa-2x"></i> Home</button>
+  	
+  			<button class = "btn-round" id = "logout" onclick="location.href='./'"><i class="fas fa-sign-out-alt fa-2x"></i>Logout</button>		
 
-		<div class="card border-danger mb-3 text-center card-round" style="max-width: 18rem;">
-			<div class="card-header" id = "h3">Delete</div>
-			<div class="card-body text-primary">
-				<div class="btn-group-vertical" role="group" aria-label="Basic example">
-					<button class="btn btn-outline-danger  btn-round" type="button" id = "deldonor" onclick="clicky(this.id)">Donor </button>
-	<!-- 				<button class="btn btn-outline-danger  btn-round" type="button" id = "delorg">Organisation/Branch</button>
-	 -->		</div>
-			</div>
-		</div>
-		<div class="card border-dark mb-3 text-center card-round" style="max-width: 18rem;">
-			<div class="card-header" id = "h4">View</div>
-			<div class="card-body text-primary">
-				<div class="btn-group-vertical" role="group" aria-label="Basic example">
-					<button class="btn btn-outline-dark  btn-round" type="button" id = "viewdonor" onclick="clicky(this.id)">Donor </button>
-					<button class="btn btn-outline-dark  btn-round" type="button" id = "vieworg" onclick="clicky(this.id)">Organisation/Branch</button>
-				</div>
-			</div>
-		</div>
 
 	</div>
-</div>
+	<div id = "replace">
+		<div class = "font1">
+			<h3 class="text-center"> Choose required option</h3>
+			<br>
+			<div class = "card-deck justify-content-center">
+				<div class="card border-primary mb-3 text-center card-round" style="max-width: 18rem;">
+					<div class="card-header" id = "h1">Insert</div>
+					<div class="card-body text-primary">
+					  	<div class="btn-group-vertical" role="group" aria-label="Basic example">
+					  		<button class="btn btn-outline-info inner btn-round" type="button" id ="insdonor" onclick="clicky(this.id)">Donor </button>
+							<button class="btn btn-outline-info inner btn-round" type="button" id ="insorg" onclick="clicky(this.id)">Organisation/Branch</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="card border-success mb-3 text-center card-round" style="max-width: 18rem;">
+					<div class="card-header" id = "h2">Update</div>
+					<div class="card-body text-primary">
+						<div class="btn-group-vertical" role="group" aria-label="Basic example">
+							<button class="btn btn-outline-success inner btn-round" type="button" id = "upddonor" onclick="clicky(this.id)">Donor </button>
+							<button class="btn btn-outline-success inner btn-round" type="button" id ="updorg" onclick="clicky(this.id)">Organisation/Branch</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="card border-danger mb-3 text-center card-round" style="max-width: 18rem;">
+					<div class="card-header" id = "h3">Delete</div>
+					<div class="card-body text-primary">
+						<div class="btn-group-vertical" role="group" aria-label="Basic example">
+							<button class="btn btn-outline-danger inner btn-round" type="button" id = "deldonor" onclick="clicky(this.id)">Donor </button>
+							<button class="btn btn-outline-danger inner btn-round" type="button" id = "orgdel" onclick="clicky(this.id)">Organisation</button>
+							<button class="btn btn-outline-danger inner btn-round" type="button" id = "branchdel" onclick="clicky(this.id)">Branch</button>
+
+					</div>
+					</div>
+				</div>
+				<div class="card border-dark mb-3 text-center card-round" style="max-width: 18rem;">
+					<div class="card-header" id = "h4">View</div>
+					<div class="card-body text-primary">
+						<div class="btn-group-vertical" role="group" aria-label="Basic example">
+							<button class="btn btn-outline-dark inner btn-round" type="button" id = "viewdonor" onclick="clicky(this.id)">Donor </button>
+							<button class="btn btn-outline-dark inner btn-round" type="button" id = "vieworg" onclick="clicky(this.id)">Organisation/Branch</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+

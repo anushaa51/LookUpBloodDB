@@ -25,7 +25,7 @@ def login():
     return render_template('fail.html')
 
 
-@app.route("/1")
+@app.route("/home")
 def home():
   return render_template('select.html')
 
@@ -52,8 +52,34 @@ def upddonor():
         val = [request.form.get('phone'),request.form.get('oid'),request.form.get('brid')]
 
         sql="UPDATE branch set br_phone = ? WHERE o_id = ? and br_id = ?"
-    
     return query('root','antechi',sql,val)
+
+
+
+
+@app.route("/orgbranchdel",methods = ['POST'])
+def orgbranchdel():
+    if request.form.get('type') == "org":
+        val = [request.form.get('oid')]
+        sql1 = "DELETE from blood where b_id in ( select b_id from blood_br where o_id = ? ) "
+        sql2 = "DELETE from organization where o_id = ? "
+    elif request.form.get('type') == "branch":
+        val = [request.form.get('oid'),request.form.get('brid')]
+        sql1 = "DELETE from blood where b_id in ( select b_id from blood_br where o_id = ? and br_id = ?) "
+        sql2 = "DELETE from branch where o_id = ? and br_id = ?"
+
+    try:
+        conobj = mysql.connector.connect(host='localhost',
+                                       database='db',
+                                       user='root',
+                                       password='antechi')
+        if conobj.is_connected():
+            cursor = conobj.cursor(prepared=True)
+            cursor.execute(sql1,val)
+            cursor.execute(sql2,val)
+            conobj.commit()
+    finally: conobj.close()
+    return "a"
 
 
 @app.route("/select",methods = ['POST'])
@@ -83,8 +109,10 @@ def select():
                 return render_template("deldonor.html", data=data)
 
         finally: conobj.close()
-  # elif option == 'delorg':
-  #     return render_template('delorg.html')
+  elif option == 'orgdel':
+      return render_template('orgdel.html')
+  elif option == 'branchdel':
+      return render_template('branchdel.html')
   elif option == 'viewdonor':
       return render_template('viewseldonor.html')
   elif option == 'vieworg':
@@ -123,8 +151,9 @@ def insert():
 def dele():
     username=request.form.get('username')
     password=request.form.get('password')
-    sql="DELETE FROM blood WHERE b_id = "+ '"' + request.form.get('bid') + '"'
-    val=None
+
+    sql="DELETE FROM blood WHERE b_id = ?"
+    val=[request.form.get('bid')]
     return query(username,password,sql,val)
 
 def query(username,password,sql,val):
@@ -135,7 +164,7 @@ def query(username,password,sql,val):
                                        user=username,
                                        password=password)
         if conobj.is_connected():
-            cursor = conobj.cursor()
+            cursor = conobj.cursor(prepared=True)
             cursor.execute(sql,val)
             conobj.commit()
     finally: conobj.close()
@@ -223,55 +252,3 @@ def viewbybg():
 
 if __name__ == "__main__":
     app.run()
- 
-# function ins(){
-#   var name = $("#inname")[0].value;
-#   var dno = $("#dno")[0].value;
-#   send("ins",[name,dno]);
-# }
-# function del(){
-#   var cond = $("#delcond")[0].value;
-#   send("del",cond);
-# }
-# function upd(){
-#   var cont = $("#updcont")[0].value;
-#   var cond = $("#updcond")[0].value;
-#   send("upd",[cont,cond]);
-# }
-# function send(query,params){
-#   var qtype,d;
-#   if(query==="upd"){
-#     qtype = "/update";
-#     d = {'uname':$("#uname")[0].value,
-#       'pwd':$("#pwd")[0].value,
-#       'cont':params[0],
-#       'cond':params[1]};
-#   }
-#   if(query==="del"){
-#     qtype = "/delete";
-#     d = {'uname':$("#uname")[0].value,
-#       'pwd':$("#pwd")[0].value,
-#       'cond':params};
-#   }
-#   if(query==="ins"){
-#     qtype = "/insert";
-#     d = {'uname':$("#uname")[0].value,
-#       'pwd':$("#pwd")[0].value,
-#       'name':params[0],
-#       'dno':params[1]};
-#   }
-
-#   $.ajax({
-#     async: true,
-#     type: "POST",
-#     url: qtype,
-#     data: d,
-#     success: function(data){
-#       var res = data['res'];
-#       $("#response")[0].innerHTML="[ Response: "+res+" ]";
-#     },
-#     error: function(data){
-#       $("#response")[0].innerHTML="Response: Login failure ]";
-#     }
-#   });
-# }

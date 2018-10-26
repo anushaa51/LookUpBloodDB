@@ -14,11 +14,50 @@ function clicky(id) { //which dropdown option selected
 		});
 }
 
-function login(){
-	var login = {'username':$("#username")[0].value, //get username and password values from webpage via its id and create login object
-				 'password':$("#password")[0].value
-				};
-	window.loginglobal = login; //global object to store login details throughout session
+
+function orgbranchdel(id){
+	if(id == "orgdel") {
+		var d = {
+			'type':'org',
+			'oid':$("#oid")[0].value
+		};		
+	}
+	else if(id == "branchdel"){
+		var d = {
+			'type':'branch',
+			'oid':$("#oid")[0].value,
+			'brid':$("#brid")[0].value
+		};
+	}
+
+	$.ajax({
+		type: "POST",
+		url: "/orgbranchdel", //name of python method
+		data: d,
+		success: function(){
+		 	$('#status').html("<h5 id = 'h2' class = 'text-center'> Successfully deleted</h5>");
+		 	},
+		error: function (){
+			$('#status').html("<h5 id = 'h3' class = 'text-center'> Oops! Some error has occurred!</h5>");
+			}
+		});
+	
+}
+
+function login(id){
+	if(id == "login") {
+		var login = {'username':$("#username")[0].value, //get username and password values from webpage via its id and create login object
+					 'password':$("#password")[0].value
+					};
+		window.loginglobal = login; //global object to store login details throughout session
+	}
+	else if(id == "home"){
+		var login = {'username' :loginglobal.username,
+					 'password' :loginglobal.password
+					};
+				}
+
+	
 
 	$.ajax({
 		async:true,
@@ -26,16 +65,12 @@ function login(){
 		url: "/login", //name of python method
 		data: login,
 		success: function(response){
-		 				$('#replace').html(response); //replace html id 'response'
-		 				$('button').addClass('inner');
+		 				$('body').html(response); //replace html id 'response'
+		 				// $('button').addClass('inner');
 		 			}
 		});
 
 }
-
-
-
-
 
 
 function insdonor(){ 
@@ -46,7 +81,7 @@ function insdonor(){
 	var orgb = [$("#oid")[0].value,$("#brid")[0].value]
 	send("insdonor",pdonor,blood,orgb)
 
-}
+	}
 
 
 
@@ -89,7 +124,13 @@ function send(query,pdonor,blood,orgb){
 		type: "POST",
 		url: qtype,
 		data: d,
-	});
+		success: function(){
+		 	$('#status').html("<h5 id = 'h2' class = 'text-center'> Successfully inserted!</h5>");
+		 	},
+		error: function (){
+			$('#status').html("<h5 id = 'h3' class = 'text-center'> Oops! Some error has occurred!</h5>");
+			}
+		});
 }
 
 function viewallblood(){
@@ -175,20 +216,16 @@ function upddonor(id){
 	$.ajax({
 		type: "POST",
 		url: "/upddonor",
-		data: d
-		// success: function(response){
-		//  				$('#replace').html(response); //replace html id 'response'
-
-		// }
-	});
+		data: d,
+		success: function(){
+		 	$('#status').html("<h5 id = 'h2' class = 'text-center'> Successfully updated!</h5>");
+		 	},
+		error: function (){
+			$('#status').html("<h5 id = 'h3' class = 'text-center'> Oops! Some error has occurred!</h5>");
+			}
+		});
 }
 
-// function handleClick(event) {
-//   var node = event.target;
-//   if (node.name == 'edit') {
-//     node.value = "Modify";
-//   }
-// }
 
 function dele(id){
 	var bid = $('#' + id).children('td:first').text();

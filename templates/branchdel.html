@@ -1,0 +1,80 @@
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Blood Donation</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}"> 
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}"> 
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/customcss.css') }}"> 
+<link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/bootstrap.css"> 
+  <link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/all.css">
+  <link rel="stylesheet" type="text/css" href="file:///home/anusha/blooddonation/LookUpBloodDB/static/css/customcss.css"> 
+
+</head>
+<body class = "font2"> 
+	<div class="jumbotron font1">
+		<div class="text-center">
+			<span class="drop">
+				<i class="fas fa-tint fa-4x"></i>
+			</span>
+	  		<h1 class="display-4 inline">Blood Bank Database</h1> 
+	  	</div>
+  	
+  		<hr class="my-4 text-center">
+  		<p class="text-center">Database that permits an authorised user to insert, update, delete and view data.</p>
+  		
+	</div>
+ -->
+	
+<div class = "font2">
+
+	<div class = "text-center">
+		<button class="btn btn-round btn-warning btn-lg font1 mb-4" type="button" >Warning!<br>
+			Deleting a branch will delete all of its blood entries
+		</button>
+	</div>
+
+	<div class="card card-round  border-danger mb-3 mx-auto mt-3" style="max-width: 50%;">
+				<div class="card-header text-center" id = "h3"><h4>Enter Details</h4></div>
+				<div class="card-body text-primary text-center mx-auto">
+					<div class="input-group mb-3 marg mt-2 mx-auto" >
+						  	<div class="input-group-prepend">
+						    	<span class="input-group-text btn-round" id="basic-addon1">Organisation ID</span>
+						  	</div>
+						  	<input type="text" class="form-control btn-round" id = "oid" name="oid" placeholder="Org ID" aria-label="oid" aria-describedby="basic-addon1">
+					</div>
+					<div class="input-group mb-3 marg mt-4 mx-auto" >
+						  	<div class="input-group-prepend">
+						    	<span class="input-group-text btn-round" id="basic-addon1">Branch ID</span>
+						  	</div>
+						  	<input type="text" class="form-control btn-round" id = "brid" name="brid" placeholder="Branch ID" aria-label="oid" aria-describedby="basic-addon1">
+					</div>
+							<button class="btn btn-round mt-2 font1 " type="button" id="branchdel" onclick="orgbranchdel(this.id)">Delete anyway</button>
+				</div>
+
+	</div>
+		<div id = "status"></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- 	<script src = "{{url_for('static',filename='javascript/jquery-3.3.1.min.js')}}"></script>
+	<script src = "{{url_for('static',filename='javascript/bootstrap.bundle.min.js')}}"></script>
+	<script type="text/javascript" src="{{url_for('static',filename='javascript/scripts.js')}}"></script>
+
+ <script type="text/javascript" src = "file:///home/anusha/blooddonation/LookUpBloodDB/static/javascript/scripts.js"></script>
+  <script type="text/javascript" src = "file:///home/anusha/blooddonation/LookUpBloodDB/static/javascript/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src = "file:///home/anusha/blooddonation/LookUpBloodDB/static/javascript/bootstrap.bundle.min.js"></script> 
+
+</body>
+</html>
+
+ -->
