@@ -73,24 +73,32 @@ function login(id){
 }
 
 
-function insdonor(){ 
-	var did = $("#did")[0].value;
-	var bid = $("#bid")[0].value;
-	var pdonor = [$("#did")[0].value,$("#name")[0].value, $("#age")[0].value,$("#gender")[0].value,$("#bg")[0].value,$("#phone")[0].value,$("#weight")[0].value] //
-	var blood = [$("#bid")[0].value,$("#haemo")[0].value,$("#wbc")[0].value,$("#rbc")[0].value,$("#pc")[0].value,$("#date")[0].value]
-	var orgb = [$("#oid")[0].value,$("#brid")[0].value]
-	send("insdonor",pdonor,blood,orgb)
+function insdonor(id){ 
+	if(id=="new"){
+		var pdonor = [$("#did")[0].value,$("#name")[0].value, $("#age")[0].value,$("#gender")[0].value,$("#bg")[0].value,$("#phone")[0].value,$("#weight")[0].value] //
+		var blood = [$("#bid")[0].value,$("#haemo")[0].value,$("#wbc")[0].value,$("#rbc")[0].value,$("#pc")[0].value,$("#date")[0].value]
+		var orgb = [$("#oid")[0].value,$("#brid")[0].value]
+		send("insnew",pdonor,blood,orgb)
+		}
+	else if(id == "old"){
+		var blood = [$("#did1")[0].value,$("#bid1")[0].value,$("#haemo1")[0].value,$("#wbc1")[0].value,$("#rbc1")[0].value,$("#pc1")[0].value,$("#date1")[0].value]
+		var orgb = [$("#oid1")[0].value,$("#brid1")[0].value]
+		send("insold",null,blood,orgb)
+		}
 
 	}
 
+function insorg(){
 
+}
 
 function send(query,pdonor,blood,orgb){
 	var qtype,d;
 
-	if(query==="insdonor"){
+	if(query=="insnew"){
 		qtype = "/insert";
 		d = {
+			'type':"insnew",
 			'username': loginglobal.username,
 			'password': loginglobal.password,
 			'did':pdonor[0],
@@ -110,6 +118,23 @@ function send(query,pdonor,blood,orgb){
 			'brid':orgb[1]
 			};
 		}
+	else if(query=="insold"){
+		qtype = "/insert";
+		d = {
+			'type': "insold",
+			'username': loginglobal.username,
+			'password': loginglobal.password,
+			'did':blood[0],
+			'bid':blood[1],
+			'haemo':blood[2],
+			'wbc':blood[3],
+			'rbc':blood[4],
+			'pc':blood[5],
+			'date':blood[6],
+			'oid':orgb[0],
+			'brid':orgb[1]
+			};
+		}
 	
 	if(query==="del"){
 		qtype = "/dele";
@@ -125,13 +150,49 @@ function send(query,pdonor,blood,orgb){
 		url: qtype,
 		data: d,
 		success: function(){
-		 	$('#status').html("<h5 id = 'h2' class = 'text-center'> Successfully inserted!</h5>");
+			$('#modalhead').html("Congrats!");
+			$('#modalbody').html("Donor successfully inserted!");
+			if($('.modal-header').hasClass("bg-danger") == true) 
+				$('.modal-header').removeClass("bg-danger");
+
+			$('.modal-header').addClass("bg-success");
+			$('#mymodal').modal();
+
+				
+
 		 	},
 		error: function (){
-			$('#status').html("<h5 id = 'h3' class = 'text-center'> Oops! Some error has occurred!</h5>");
+			$('#modalhead').html("Oops!");
+			$('#modalbody').html(" There was an error!");
+			if($('.modal-header').hasClass("bg-success") == true) 
+				$('.modal-header').removeClass("bg-success");
+
+			$('.modal-header').addClass("bg-danger");
+			$('#mymodal').modal();
+
+				
+
 			}
 		});
 }
+
+function navcheck(id){
+	if(id=="NewNavbtn") {
+		if($('#OldNav').hasClass("show") == true) 
+			$('#OldNav').removeClass("show");
+
+			$('OldNavbtn').addClass("collapsed")
+
+		}
+	else if(id =="OldNavbtn") {
+		if($('#NewNav').hasClass("show") == true) 
+			$('#NewNav').removeClass("show");
+
+			$('NewNavbtn').addClass("collapsed")
+
+	}
+}
+
 
 function viewallblood(){
 	$.ajax({
@@ -217,13 +278,25 @@ function upddonor(id){
 		type: "POST",
 		url: "/upddonor",
 		data: d,
-		success: function(){
-		 	$('#status').html("<h5 id = 'h2' class = 'text-center'> Successfully updated!</h5>");
-		 	},
-		error: function (){
-			$('#status').html("<h5 id = 'h3' class = 'text-center'> Oops! Some error has occurred!</h5>");
-			}
-		});
+			success: function(){
+			$('#modalhead').html("Congrats!");
+			$('#modalbody').html("Successfully updated!!");
+			if($('.modal-header').hasClass("bg-danger") == true) 
+				$('.modal-header').removeClass("bg-danger");
+
+			$('.modal-header').addClass("bg-success");
+			$('#mymodal').modal();
+		},
+			error: function (){
+			$('#modalhead').html("Oops!");
+			$('#modalbody').html(" There was an error!");
+			if($('.modal-header').hasClass("bg-success") == true) 
+				$('.modal-header').removeClass("bg-success");
+
+			$('.modal-header').addClass("bg-danger");
+			$('#mymodal').modal();
+		}
+	});
 }
 
 
@@ -232,6 +305,7 @@ function dele(id){
 	$('#' + id).fadeOut('slow', function(here){ 
             $(this).remove();                    
         });    
+
 	console.log("1",bid);
 	send("del",bid,null,null);
 }
@@ -243,3 +317,4 @@ function addRow() {
   	 $(this).attr("ondblclick","dele(this.id)")
 	});
 }	
+

@@ -13,6 +13,9 @@ border-radius: 25px;
 .card-round{
   border-radius: 45px;
 }
+input{
+  border-radius: 25px;
+}
 input:hover{
     border-color:  rgba(76, 70, 70,0.5);
   box-shadow: 0 0px 0px rgba(76, 70, 70,0.5) inset, 0 0 8px rgba(76, 70, 70,0.5);
@@ -27,7 +30,7 @@ float: right;
 }
 #username,#password{
     margin-top: 5%;
-    margin-bottom: 10%;
+    margin-bottom: 7%;
     border-radius: 25px;
     text-align: inherit;
     font-size: 20px;
@@ -44,7 +47,8 @@ float: right;
   	padding-right: 40px;
   }
 
-
+.jumbotron,.card,#home,#logout { transition: all 0.5s ease-in-out; }
+.card:hover,#home:hover,#logout:hover { transform: scale(1.05); }
 
 .jumbotron:hover {
   border-color:  rgba(182,50,50,.8);
@@ -106,8 +110,13 @@ float: right;
   background-color: rgba(77,191,288,0.7);
 
 }
-
-#h2 {
+#btnn {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.25rem; 
+}
+#h2,.h2 {
   background-color: rgba(52, 238, 52,0.5);
 
 
@@ -128,4 +137,12 @@ float: right;
     left: 50%;
     margin-left: -3px;
     top: 0;
+}
+
+
+.cusnav{
+  width: 50%;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
 }

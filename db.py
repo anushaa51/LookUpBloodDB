@@ -123,29 +123,44 @@ def select():
 
 @app.route("/insert", methods = ['POST'])
 def insert():
-
     username=request.form.get('username') #getting details from POST 
     password=request.form.get('password')
-    sql1="INSERT INTO  donor values (?,?,?,?,?,?,?)"
     sql2 ="INSERT INTO blood VALUES (?,?,?,?,?,?,?)"
     sql3 = "INSERT INTO blood_br values (?,?,?)"
-    val1=[request.form.get('did'),request.form.get('name'),request.form.get('age'),request.form.get('gender'),request.form.get('bg'),request.form.get('phone'),request.form.get('weight')]
     val2=[request.form.get('bid'),request.form.get('haemo'),request.form.get('wbc'),request.form.get('rbc'),request.form.get('pc'),request.form.get('date'),request.form.get('did')]
     val3=[request.form.get('bid'),request.form.get('oid'),request.form.get('brid')]
-    try:
-        conobj = mysql.connector.connect(host='localhost',
-                                       database='db',
-                                       user=username,
-                                       password=password)
-        if conobj.is_connected():
-            cursor = conobj.cursor(prepared=True)
-            cursor.execute(sql1,val1)
-            cursor.execute(sql2,val2)
-            cursor.execute(sql3,val3)
-            conobj.commit()
-    finally: conobj.close()
-    return "a"
-    # return query(username,password,sql,val)
+
+    if request.form.get('type') == 'insnew':
+        sql1="INSERT INTO  donor values (?,?,?,?,?,?,?)"
+        val1=[request.form.get('did'),request.form.get('name'),request.form.get('age'),request.form.get('gender'),request.form.get('bg'),request.form.get('phone'),request.form.get('weight')]
+ 
+        try:
+            conobj = mysql.connector.connect(host='localhost',
+                                           database='db',
+                                           user=username,
+                                           password=password)
+            if conobj.is_connected():
+                cursor = conobj.cursor(prepared=True)
+                cursor.execute(sql1,val1)
+                cursor.execute(sql2,val2)
+                cursor.execute(sql3,val3)
+                conobj.commit()
+        finally: conobj.close()
+        return "a"
+    elif request.form.get('type') == "insold":
+      try:
+            conobj = mysql.connector.connect(host='localhost',
+                                           database='db',
+                                           user=username,
+                                           password=password)
+            if conobj.is_connected():
+                cursor = conobj.cursor(prepared=True)
+                cursor.execute(sql2,val2)
+                cursor.execute(sql3,val3)
+                conobj.commit()
+      finally: conobj.close()
+      return "a"
+
 
 @app.route("/dele", methods = ['POST'])
 def dele():

@@ -2,7 +2,7 @@
 <div class = "font2 text-center">
   <button class="btn  btn-round btn-lg font1 mb-4" type="button" id ="h3">Nearest Locations</button>
 
-  <table class="table table-hover">
+  <table class="table table-hover text-white">
     <thead>
     <tr>
       <th scope="col">Blood Group</th>
@@ -14,9 +14,9 @@
 
     </tr>
     </thead>
-    <tbody >
+    <tbody class = "btn-round">
       {% for row in data %}
-            <tr> 
+            <tr class = "btn-round"> 
             {% for d in row %}
                 <td>{{ d }}</td>
             {% endfor %}
