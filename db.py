@@ -209,7 +209,7 @@ def insert():
                 return jsonify({'res': "SUCC"})
         except mysql.connector.errors.IntegrityError as err:
             conobj.close()
-            return jsonify({'res': "DUP"})
+            return jsonify({'res': "PRI"})
             
         # finally: conobj.close()
 
@@ -229,11 +229,11 @@ def insert():
       except mysql.connector.errors.IntegrityError as err:
           conobj.close()
 
-          if err.errno == 1062:
+          if err.errno == 1062:              #errorcode for both unique and primary key constraints
               return jsonify({'res': "PRI"})
-          elif err.errno == 1452:
+          elif err.errno == 1452:            #errorcode for foreign key constraint
               return jsonify({'res': "FOR"})
-          else:
+          else:                              #handle any other mysql error
               return jsonify({'res': "UNK"})
 
 
@@ -247,6 +247,7 @@ def dele():
     val=[request.form.get('bid')]
     return query(username,password,sql,val)
 
+
 def query(username,password,sql,val):
 
     try:
@@ -257,9 +258,16 @@ def query(username,password,sql,val):
         if conobj.is_connected():
             cursor = conobj.cursor(prepared=True)
             cursor.execute(sql,val)
+            row = cursor.rowcount
             conobj.commit()
+                
+
     finally: conobj.close()
-    return "a"
+    return jsonify(
+                  {'res':" Updated entries : ",
+                   'row':row
+                  })
+    
 
 
 @app.route('/viewallblood', methods = ['POST'])       

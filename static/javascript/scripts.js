@@ -212,7 +212,7 @@ function send(query,pdonor,blood,orgb){
 		data: d,
 		success: function(data){
 			if(data['res']=="SUCC"){
-				$('#modalhead').html("Congrats!" + data['res']);
+				$('#modalhead').html("Congrats!" );
 				$('#modalbody').html("Insert was successful!");
 				if($('.modal-header').hasClass("bg-danger") == true) 
 					$('.modal-header').removeClass("bg-danger");
@@ -375,14 +375,25 @@ function upddonor(id){
 		type: "POST",
 		url: "/upddonor",
 		data: d,
-			success: function(){
-			$('#modalhead').html("Congrats!");
-			$('#modalbody').html("Successfully updated!");
-			if($('.modal-header').hasClass("bg-danger") == true) 
-				$('.modal-header').removeClass("bg-danger");
+			success: function(data){
+				if(data['row'] > 0){
+					$('#modalhead').html("Congrats!");
+					$('#modalbody').html(data['res'] + data['row']);
+					if($('.modal-header').hasClass("bg-danger") == true) 
+						$('.modal-header').removeClass("bg-danger");
 
-			$('.modal-header').addClass("bg-success");
-			$('#mymodal').modal();
+					$('.modal-header').addClass("bg-success");
+					$('#mymodal').modal();
+				}
+				else if(data['row'] == 0){
+					$('#modalhead').html("Oops!");
+					$('#modalbody').html(" That entry does not exist!");
+					if($('.modal-header').hasClass("bg-success") == true) 
+						$('.modal-header').removeClass("bg-success");
+
+					$('.modal-header').addClass("bg-danger");
+					$('#mymodal').modal();
+				}
 		},
 			error: function (){
 			$('#modalhead').html("Oops!");
