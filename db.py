@@ -52,6 +52,13 @@ def upddonor():
         val = [request.form.get('phone'),request.form.get('oid'),request.form.get('brid')]
 
         sql="UPDATE branch set br_phone = ? WHERE o_id = ? and br_id = ?"
+
+    elif request.form.get('type') == "orgname":
+        val = [request.form.get('name'),request.form.get('oid')]
+
+        sql="UPDATE organization set org_name = ? WHERE o_id = ?"
+
+
     return query('root','antechi',sql,val)
 
 
@@ -76,7 +83,10 @@ def orgbranchdel():
         if conobj.is_connected():
             cursor = conobj.cursor(prepared=True)
             cursor.execute(sql1,val)
+
             cursor.execute(sql2,val)
+            print(cursor.rowcount)
+
             conobj.commit()
     finally: conobj.close()
     return "a"
@@ -119,7 +129,57 @@ def select():
       return render_template('viewselorg.html')
   else: return None
 
+@app.route("/insertorg", methods = ['POST'])
+def insertorg():
+    username=request.form.get('username') #getting details from POST 
+    password=request.form.get('password')
+    sql1 = "INSERT into organization values (?,?,?)"
+    sql2 = "INSERT into branch values (?,?,?,?)"
+    sql3 = "INSERT into distance values (?,?,?,?)"
+    val1 = [request.form.get('oid'),request.form.get('oname'),request.form.get('no')]
+    val2 = [request.form.get('oid'),request.form.get('brid'),request.form.get('braddr'),request.form.get('brphno')]
+    val3 = [[request.form.get('oid'),request.form.get('brid'),"H01",request.form.get('hid1')],[request.form.get('oid'),request.form.get('brid'),"H02",request.form.get('hid2')],[request.form.get('oid'),request.form.get('brid'),"H03",request.form.get('hid3')]]
+    try:
+            conobj = mysql.connector.connect(host='localhost',
+                                           database='db',
+                                           user=username,
+                                           password=password)
+            if conobj.is_connected():
+                cursor = conobj.cursor(prepared=True)
+                cursor.execute(sql1,val1)
+                cursor.execute(sql2,val2)
+                for q in val3:
+                    cursor.execute(sql3,q)
+                conobj.commit()
 
+    except Error as err:
+        print("oh" + err)
+        # return jsonify({"res" : err})
+    finally: conobj.close()
+    return "a"
+
+@app.route("/insertbranch", methods = ['POST'])
+def insertbranch():
+    username=request.form.get('username') #getting details from POST 
+    password=request.form.get('password')
+    sql1 = "INSERT into branch values (?,?,?,?)"
+    val1 = [request.form.get('oid'),request.form.get('brid'),request.form.get('braddr'),request.form.get('brphno')]
+    sql2 = "INSERT into distance values (?,?,?,?)"
+    val2 = [[request.form.get('oid'),request.form.get('brid'),"H01",request.form.get('hid1')],[request.form.get('oid'),request.form.get('brid'),"H02",request.form.get('hid2')],[request.form.get('oid'),request.form.get('brid'),"H03",request.form.get('hid3')]]
+
+    try:
+            conobj = mysql.connector.connect(host='localhost',
+                                           database='db',
+                                           user=username,
+                                           password=password)
+            if conobj.is_connected():
+                cursor = conobj.cursor(prepared=True)
+                cursor.execute(sql1,val1)
+                for q in val2:
+                    cursor.execute(sql2,q)
+                conobj.commit()
+    finally: conobj.close()
+    return "a"
 
 @app.route("/insert", methods = ['POST'])
 def insert():
@@ -145,8 +205,14 @@ def insert():
                 cursor.execute(sql2,val2)
                 cursor.execute(sql3,val3)
                 conobj.commit()
-        finally: conobj.close()
-        return "a"
+                conobj.close()
+                return jsonify({'res': "SUCC"})
+        except mysql.connector.errors.IntegrityError as err:
+            conobj.close()
+            return jsonify({'res': "DUP"})
+            
+        # finally: conobj.close()
+
     elif request.form.get('type') == "insold":
       try:
             conobj = mysql.connector.connect(host='localhost',
@@ -158,8 +224,18 @@ def insert():
                 cursor.execute(sql2,val2)
                 cursor.execute(sql3,val3)
                 conobj.commit()
-      finally: conobj.close()
-      return "a"
+                conobj.close()
+                return jsonify({'res': "SUCC"})
+      except mysql.connector.errors.IntegrityError as err:
+          conobj.close()
+
+          if err.errno == 1062:
+              return jsonify({'res': "PRI"})
+          elif err.errno == 1452:
+              return jsonify({'res': "FOR"})
+          else:
+              return jsonify({'res': "UNK"})
+
 
 
 @app.route("/dele", methods = ['POST'])

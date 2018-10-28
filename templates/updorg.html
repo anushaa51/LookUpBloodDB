@@ -37,6 +37,26 @@
 
 
     <div class="col-md-5 mt-5">
+		<button type="button" class="btn btn-info dropdown-toggle btn-lg btn-block " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Organisation Name</button>
+		<div class="dropdown-menu">
+		    <div class="input-group dropdown-item">
+				  <div class="input-group-prepend">
+				    <span class="input-group-text"  >Org ID</span>
+				  </div>
+				  <input type="text" class="form-control" id = "oid1" placeholder="OID" aria-label="OID" aria-describedby="basic-addon1">
+			</div>
+		    <div class="input-group dropdown-item">
+				  <div class="input-group-prepend">
+				    <span class="input-group-text"  >New Name</span>
+				  </div>
+				  <input type="text" class="form-control" id = "name" placeholder="New Name" aria-label="name" aria-describedby="basic-addon1">
+			</div>
+			<div class = "text-center dropdown-item">
+	    			<button type="button" class="btn btn-sm btn-dark btn-round" id = "orgname" onclick="upddonor(this.id)"> Update </button>
+			</div>
+		</div>
+	</div>
+	    <div class="col-md-5 mt-5">
 		<button type="button" class="btn btn-info dropdown-toggle btn-lg btn-block " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Phone Number</button>
 		<div class="dropdown-menu">
 		    <div class="input-group dropdown-item">
@@ -68,16 +88,17 @@
   </div>
 
 </div>
+<!-- Modal -->
 <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content btn-round">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalhead"></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <div class="modal-header topradius pt-2 pb-2">
+        <h4 class="modal-title mx-auto pl-4" id="modalhead"></h4>
+        <button type="button" class="close" id = "btnclose" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body text-center">
  		<h4 id="modalbody"></h4>
  	</div>
     </div>

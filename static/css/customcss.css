@@ -139,10 +139,18 @@ float: right;
     top: 0;
 }
 
+#btnclose{
+  margin-left: 0px;
+}
 
 .cusnav{
   width: 50%;
   text-align: center;
   margin-right: auto;
   margin-left: auto;
+}
+
+.topradius{
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px; 
 }

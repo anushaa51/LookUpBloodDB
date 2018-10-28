@@ -46,11 +46,24 @@
 							<button class="btn btn-round font1 mt-2" type="button" id="orgdel" onclick="orgbranchdel(this.id)">Delete anyway</button>
 				</div>
 	</div>
-	<div id = "status"></div>
 </div>
 
 
-
+<div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content btn-round">
+      <div class="modal-header topradius pt-2 pb-2">
+        <h4 class="modal-title mx-auto pl-4" id="modalhead"></h4>
+        <button type="button" class="close" id = "btnclose" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+ 		<h4 id="modalbody"></h4>
+ 	</div>
+    </div>
+  </div>
+</div>
 
 
 
