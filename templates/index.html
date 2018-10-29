@@ -34,25 +34,43 @@
 			<div class="card-body text-primary text-center">
 				<form >
 			    		<div class="col-lg">
-			      			<input type="text" class = "form-control" id="username" placeholder="Username">
+			      			<input type="text" class = "form-control"  name = "username" id="username" placeholder="Username">
 			    		</div>
 			    		<div class="col-lg">
-			      			<input type="password" class="form-control" id="password" placeholder="Password">
+			      			<input type="password" class="form-control" name = "password"  id="password" placeholder="Password">
 			   		 	</div>	
-				</form>
+								</form>
+
 		  
 	    		<div class = "text-center mar">
-	    			<button type="button" class="btn btn-lg btn-dark btn-round" id = "login" onclick="login(this.id)" > Login </button>
+	    			<button type="button" class="btn btn-lg btn-dark btn-round" id = "login" onclick="wlogin(this.id)" > Login </button>
 				</div>
-				
 			</div>
 		</div>
 	
 	    	
 	</div>
+	<div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content btn-round">
+      <div class="modal-header topradius pt-2 pb-2">
+        <h4 class="modal-title mx-auto pl-4" id="modalhead"></h4>
+        <button type="button" class="close" id = "btnclose" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+ 		<h4 id="modalbody"></h4>
+ 	</div>
+    </div>
+  </div>
+</div>
+
 
 
 	<script src = "{{url_for('static',filename='javascript/jquery-3.3.1.min.js')}}"></script>
+<!-- 	<script src = "{{url_for('static',filename='javascript/validate.js')}}"></script>
+ -->
 	<script src = "{{url_for('static',filename='javascript/bootstrap.bundle.min.js')}}"></script>
 	<script type="text/javascript" src="{{url_for('static',filename='javascript/scripts.js')}}"></script>
 

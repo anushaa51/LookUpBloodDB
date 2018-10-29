@@ -83,13 +83,16 @@ def orgbranchdel():
         if conobj.is_connected():
             cursor = conobj.cursor(prepared=True)
             cursor.execute(sql1,val)
-
+            row = cursor.rowcount #nunber of blood entries deleted
             cursor.execute(sql2,val)
-            print(cursor.rowcount)
-
             conobj.commit()
+
     finally: conobj.close()
-    return "a"
+    return jsonify(
+                  {'res':" Deleted blood entries : ",
+                   'row':row
+                  })
+
 
 
 @app.route("/select",methods = ['POST'])
@@ -151,12 +154,18 @@ def insertorg():
                 for q in val3:
                     cursor.execute(sql3,q)
                 conobj.commit()
+                return jsonify({'res': "SUCC"})
+    except mysql.connector.errors.IntegrityError as err:
+          # conobj.close()
 
-    except Error as err:
-        print("oh" + err)
-        # return jsonify({"res" : err})
-    finally: conobj.close()
-    return "a"
+          if err.errno == 1062:              #errorcode for both unique and primary key constraints
+              return jsonify({'res': "PRI"})
+          elif err.errno == 1452:            #errorcode for foreign key constraint
+              return jsonify({'res': "FOR"})
+          else:                              #handle any other mysql error
+              return jsonify({'res': "UNK"})
+    finally:conobj.close()
+
 
 @app.route("/insertbranch", methods = ['POST'])
 def insertbranch():
@@ -178,8 +187,17 @@ def insertbranch():
                 for q in val2:
                     cursor.execute(sql2,q)
                 conobj.commit()
-    finally: conobj.close()
-    return "a"
+                return jsonify({'res': "SUCC"})
+    except mysql.connector.errors.IntegrityError as err:
+          # conobj.close()
+
+          if err.errno == 1062:              #errorcode for both unique and primary key constraints
+              return jsonify({'res': "PRI"})
+          elif err.errno == 1452:            #errorcode for foreign key constraint
+              return jsonify({'res': "FOR"})
+          else:                              #handle any other mysql error
+              return jsonify({'res': "UNK"})
+    finally:conobj.close()
 
 @app.route("/insert", methods = ['POST'])
 def insert():
@@ -205,13 +223,17 @@ def insert():
                 cursor.execute(sql2,val2)
                 cursor.execute(sql3,val3)
                 conobj.commit()
-                conobj.close()
+                # conobj.close()
                 return jsonify({'res': "SUCC"})
-        except mysql.connector.errors.IntegrityError as err:
-            conobj.close()
-            return jsonify({'res': "PRI"})
-            
-        # finally: conobj.close()
+        except Error as err:
+            # conobj.close()
+            if err.errno == 1062:              #errorcode for both unique and primary key constraints
+                return jsonify({'res': "PRI"})
+            elif err.errno == 1452:            #errorcode for foreign key constraint
+                return jsonify({'res': "FOR"})
+            else:                              #handle any other mysql error
+                return jsonify({'res': "UNK"})
+        finally: conobj.close()
 
     elif request.form.get('type') == "insold":
       try:
@@ -224,10 +246,10 @@ def insert():
                 cursor.execute(sql2,val2)
                 cursor.execute(sql3,val3)
                 conobj.commit()
-                conobj.close()
+                # conobj.close()
                 return jsonify({'res': "SUCC"})
       except mysql.connector.errors.IntegrityError as err:
-          conobj.close()
+          # conobj.close()
 
           if err.errno == 1062:              #errorcode for both unique and primary key constraints
               return jsonify({'res': "PRI"})
@@ -235,8 +257,7 @@ def insert():
               return jsonify({'res': "FOR"})
           else:                              #handle any other mysql error
               return jsonify({'res': "UNK"})
-
-
+      finally: conobj.close()
 
 @app.route("/dele", methods = ['POST'])
 def dele():

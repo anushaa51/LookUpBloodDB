@@ -53,10 +53,8 @@
 						  <div class="input-group-prepend">
 						    <span class="input-group-text" id="basic-addon1">Weight</span>
 						  </div>
-						  <input type="text" class="form-control" id="weight" name="weight" placeholder="in kgs" aria-label="Weight" aria-describedby="basic-addon1">
+						  <input type="number" class="form-control" id="weight" name="weight" min = "50" step = "0.1" placeholder="in kgs" aria-label="Weight" aria-describedby="basic-addon1">
 					</div>
-<!-- 				    	<button type="button" class="btn btn-dark" onclick="insdonor()" > Submit </button></a>
- -->
 							
 				</div>
 			</div>
@@ -76,7 +74,7 @@
 						<div class="input-group-prepend">
 						  <span class="input-group-text" id="basic-addon1">Haemoglobin</span>
 						</div>
-						<input type="text" class="form-control" id = "haemo" name = "haemo" placeholder="g/dL" aria-label="Haemoglobin" aria-describedby="basic-addon1">
+						<input type="number" class="form-control" id = "haemo" min = "13" step = "0.1" max = "17.5" name = "haemo" placeholder="g/dL" aria-label="Haemoglobin" aria-describedby="basic-addon1">
 					</div>
 
 					<div class="input-group mb-3 marg  mx-auto" >
@@ -84,21 +82,21 @@
 							<div class="input-group-prepend">
 						       <span class="input-group-text" id="basic-addon1">White Blood Cell Count</span>
 							</div>
-						  	<input type="text" class="form-control" id = "wbc" name = "wbc" placeholder="WBC per microlitre" aria-label="wbc" aria-describedby="basic-addon1">
+						  	<input type="number" class="form-control" id = "wbc" name = "wbc" min = "4.6" max = "11.0" step = "0.1" placeholder="x10^9 WBC per litre" aria-label="wbc" aria-describedby="basic-addon1">
 						</div>
 						
 						<div class="input-group mb-3 marg  mx-auto" >
 						  	<div class="input-group-prepend">
 						  	   <span class="input-group-text" id="basic-addon1">Red Blood Cell Count</span>
 						  	</div>
-						  	<input type="text" class="form-control"  id = "rbc" name = "rbc" placeholder="Cells per litre" aria-label="rbc" aria-describedby="basic-addon1">
+						  	<input type="number" class="form-control"  id = "rbc" min = "4.2" max="6.1" step = "0.1" name = "rbc" placeholder=" million cells per microlitre" aria-label="rbc" aria-describedby="basic-addon1">
 						</div>
 
 						<div class="input-group mb-3 marg  mx-auto" >
 						    <div class="input-group-prepend">
 						    	<span class="input-group-text" id="basic-addon1">Platelet Count</span>
 						  	</div>
-						 	 <input type="text" class="form-control" id = "pc" name = "pc" placeholder="Platelets per microlitre" aria-label="pc" aria-describedby="basic-addon1">
+						 	 <input type="number" class="form-control" id = "pc" name = "pc" min = "1.5" max = "4.5 "step = "0.1" placeholder="x10^5 Platelets per microlitre" aria-label="pc" aria-describedby="basic-addon1">
 						</div> 
 
 					<div class="input-group mb-3 marg  mx-auto" >						  
@@ -175,7 +173,7 @@
 						<div class="input-group-prepend">
 						  <span class="input-group-text" id="basic-addon1">Haemoglobin</span>
 						</div>
-						<input type="text" class="form-control" id = "haemo1" name = "haemo" placeholder="g/dL" aria-label="Haemoglobin" aria-describedby="basic-addon1">
+						<input type="number" class="form-control" id = "haemo1" name = "haemo" min = "13" step = "0.1" max = "17.5" placeholder="g/dL" aria-label="Haemoglobin" aria-describedby="basic-addon1">
 					</div>
 
 					<div class="input-group mb-3 marg  mx-auto" >
@@ -183,21 +181,21 @@
 							<div class="input-group-prepend">
 						       <span class="input-group-text" id="basic-addon1">White Blood Cell Count</span>
 							</div>
-						  	<input type="text" class="form-control" id = "wbc1" name = "wbc" placeholder="WBC per microlitre" aria-label="wbc" aria-describedby="basic-addon1">
+						  	<input type="number" class="form-control" id = "wbc1" name = "wbc" min = "4.6" max = "11.0" step = "0.1" placeholder="WBC per microlitre" aria-label="wbc" aria-describedby="basic-addon1">
 						</div>
 						
 						<div class="input-group mb-3 marg  mx-auto" >
 						  	<div class="input-group-prepend">
 						  	   <span class="input-group-text" id="basic-addon1">Red Blood Cell Count</span>
 						  	</div>
-						  	<input type="text" class="form-control"  id = "rbc1" name = "rbc" placeholder="Cells per litre" aria-label="rbc" aria-describedby="basic-addon1">
+						  	<input type="number" class="form-control" min = "4.2" max="6.1" step = "0.1" id = "rbc1" name = "rbc" placeholder="Cells per litre" aria-label="rbc" aria-describedby="basic-addon1">
 						</div>
 
 						<div class="input-group mb-3 marg  mx-auto" >
 						    <div class="input-group-prepend">
 						    	<span class="input-group-text" id="basic-addon1">Platelet Count</span>
 						  	</div>
-						 	 <input type="text" class="form-control" id = "pc1" name = "pc" placeholder="Platelets per microlitre" aria-label="pc" aria-describedby="basic-addon1">
+						 	 <input type="number" class="form-control" id = "pc1" min = "1.5" max = "4.5 "step = "0.1" name = "pc" placeholder="Platelets per microlitre" aria-label="pc" aria-describedby="basic-addon1">
 						</div> 
 
 					<div class="input-group mb-3 marg  mx-auto" >						  

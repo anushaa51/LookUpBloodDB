@@ -1,17 +1,45 @@
+var login;
 var loginglobal;
 var row_id = 1;
+
+function wlogin(id){
+	
+
+		if(id == "login") {
+			if($("#username")[0].value == '' || $("#password")[0].value == '') {
+				fieldBlank();
+				}
+
+			else {
+				window.login = {'username':$("#username")[0].value, //get username and password values from webpage via its id and create login object
+					 	'password':$("#password")[0].value
+						};
+			window.loginglobal = login; //global object to store login details throughout session
+			loginajax();
+			}
+		}
+	
+		else if(id == "home"){
+			window.login = {'username' :loginglobal.username,
+						 'password' :loginglobal.password
+						};
+			loginajax();
+
+		}
+}
+	
 
 function clicky(id) { //which dropdown option selected
     var option = {'id':id};
     $.ajax({
 		async:true,
 		type: "POST",
-		url: "/select", //name of python method
+		url: "/select", //python method rendering respective option among insert/delete/update/view
 		data: option,
 		success: function(response){
 		 				$('#replace').html(response);
-		 			}
-		});
+		 	}
+	});
 }
 
 
@@ -34,54 +62,25 @@ function orgbranchdel(id){
 		type: "POST",
 		url: "/orgbranchdel", //name of python method
 		data: d,
-		success: function(){
-			$('#modalhead').html("Congrats!");
-			$('#modalbody').html("Successfully deleted!!");
-			if($('.modal-header').hasClass("bg-danger") == true) 
-				$('.modal-header').removeClass("bg-danger");
+		success: function(data){
+				if(data['row'] > 0){
+					$('#modalhead').html("Congrats!");
+					$('#modalbody').html(data['res'] + data['row']);
+					if($('.modal-header').hasClass("bg-danger") == true) 
+						$('.modal-header').removeClass("bg-danger");
 
-			$('.modal-header').addClass("bg-success");
-			$('#mymodal').modal();
-		},
-			error: function (){
-			$('#modalhead').html("Oops!");
-			$('#modalbody').html(" There was an error!");
-			if($('.modal-header').hasClass("bg-success") == true) 
-				$('.modal-header').removeClass("bg-success");
-
-			$('.modal-header').addClass("bg-danger");
-			$('#mymodal').modal();
-		}
-		});
-	
-}
-
-function login(id){
-	if(id == "login") {
-		var login = {'username':$("#username")[0].value, //get username and password values from webpage via its id and create login object
-					 'password':$("#password")[0].value
-					};
-		window.loginglobal = login; //global object to store login details throughout session
-	}
-	else if(id == "home"){
-		var login = {'username' :loginglobal.username,
-					 'password' :loginglobal.password
-					};
+					$('.modal-header').addClass("bg-success");
+					$('#mymodal').modal();
 				}
-
+				else if(data['row'] == 0){
+					oopsError("foreign");
+				}
+		},
+		error: function (){
+			oopsError("error");
+		}
+	});
 	
-
-	$.ajax({
-		async:true,
-		type: "POST",
-		url: "/login", //name of python method
-		data: login,
-		success: function(response){
-		 				$('body').html(response); //replace html id 'response'
-		 				// $('button').addClass('inner');
-		 			}
-		});
-
 }
 
 
@@ -90,33 +89,44 @@ function insdonor(id){
 		var pdonor = [$("#did")[0].value,$("#name")[0].value, $("#age")[0].value,$("#gender")[0].value,$("#bg")[0].value,$("#phone")[0].value,$("#weight")[0].value] //
 		var blood = [$("#bid")[0].value,$("#haemo")[0].value,$("#wbc")[0].value,$("#rbc")[0].value,$("#pc")[0].value,$("#date")[0].value]
 		var orgb = [$("#oid")[0].value,$("#brid")[0].value]
-		send("insnew",pdonor,blood,orgb)
-		}
+		var arraycheck = [pdonor,blood,orgb]
+		var blank = checkBlank(arraycheck);
+		if(blank!=1)
+			send("insnew",pdonor,blood,orgb)
+	}
+	
 	else if(id == "old"){
 		var blood = [$("#did1")[0].value,$("#bid1")[0].value,$("#haemo1")[0].value,$("#wbc1")[0].value,$("#rbc1")[0].value,$("#pc1")[0].value,$("#date1")[0].value]
 		var orgb = [$("#oid1")[0].value,$("#brid1")[0].value]
-		send("insold",null,blood,orgb)
+		var arraycheck = [blood,orgb]
+		var blank = checkBlank(arraycheck);
+		if(blank!=1)
+			send("insold",null,blood,orgb)
+	}
+}
+
+
+function insorg(id){
+	if(id=="neworg"){
+		var org = [$("#oid")[0].value,$("#oname")[0].value,$("#no")[0].value]
+		var branch = [$("#brid")[0].value,$("#braddr")[0].value,$("#brphno")[0].value]
+		var distance = [$("#hid1")[0].value,$("#hid2")[0].value,$("#hid3")[0].value]
+		var arraycheck = [org,branch,distance]
+		var blank = checkBlank(arraycheck);
+		if(blank!=1)
+			send("neworg",org,branch,distance)
+		}
+	else if(id == "oldorg"){
+		var branch = [$("#brid1")[0].value,$("#braddr1")[0].value,$("#brphno1")[0].value,$("#oid1")[0].value]
+		var distance = [$("#ohid1")[0].value,$("#ohid2")[0].value,$("#ohid3")[0].value]		
+		var arraycheck = [branch,distance]
+		var blank = checkBlank(arraycheck);
+		if(blank!=1)
+			send("oldorg",null,branch,distance)
 		}
 
 	}
 
-function insorg(id){
-	if(id=="neworg"){
-		console.log("enter");
-		var org = [$("#oid")[0].value,$("#oname")[0].value,$("#no")[0].value]
-		var branch = [$("#brid")[0].value,$("#braddr")[0].value,$("#brphno")[0].value]
-		var distance = [$("#hid1")[0].value,$("#hid2")[0].value,$("#hid3")[0].value]
-		send("neworg",org,branch,distance)
-
-	}
-	else if(id == "oldorg"){
-		var branch = [$("#brid1")[0].value,$("#braddr1")[0].value,$("#brphno1")[0].value,$("#oid1")[0].value]
-		var distance = [$("#ohid1")[0].value,$("#ohid2")[0].value,$("#ohid3")[0].value]		
-		send("oldorg",null,branch,distance)
-
-	}
-
-}
 
 function send(query,pdonor,blood,orgb){
 	var qtype,d;
@@ -199,7 +209,6 @@ function send(query,pdonor,blood,orgb){
 	
 	else if(query==="del"){
 		qtype = "/dele";
-		console.log("2",pdonor);
 		d = {
 			'username': loginglobal.username,
 			'password': loginglobal.password,			
@@ -212,54 +221,27 @@ function send(query,pdonor,blood,orgb){
 		data: d,
 		success: function(data){
 			if(data['res']=="SUCC"){
+
 				$('#modalhead').html("Congrats!" );
 				$('#modalbody').html("Insert was successful!");
 				if($('.modal-header').hasClass("bg-danger") == true) 
 					$('.modal-header').removeClass("bg-danger");
-
 				$('.modal-header').addClass("bg-success");
 				$('#mymodal').modal();
 			}
 			else if(data['res']=="PRI"){
-				$('#modalhead').html("Oops!");
-				$('#modalbody').html(" That entry already exists!");
-				if($('.modal-header').hasClass("bg-success") == true) 
-					$('.modal-header').removeClass("bg-success");
-
-				$('.modal-header').addClass("bg-danger");
-				$('#mymodal').modal();
+				oopsError("primary");
 			}
 
 			else if(data['res']=="FOR"){
-				$('#modalhead').html("Oops!");
-				$('#modalbody').html(" That donor entry does not exist!");
-				if($('.modal-header').hasClass("bg-success") == true) 
-					$('.modal-header').removeClass("bg-success");
-
-				$('.modal-header').addClass("bg-danger");
-				$('#mymodal').modal();
+				oopsError("foreign");
 			}
 			else if(data['res']=="UNK"){
-				$('#modalhead').html("Oops!");
-				$('#modalbody').html(" There was an error!");
-				if($('.modal-header').hasClass("bg-success") == true) 
-					$('.modal-header').removeClass("bg-success");
-
-				$('.modal-header').addClass("bg-danger");
-				$('#mymodal').modal();
+				oopsError("error");
 			}
 		 },
 		error: function (){
-			$('#modalhead').html("Oops!");
-			$('#modalbody').html(" There was an error! " );
-			if($('.modal-header').hasClass("bg-success") == true) 
-				$('.modal-header').removeClass("bg-success");
-
-			$('.modal-header').addClass("bg-danger");
-			$('#mymodal').modal();
-
-				
-
+			oopsError("error");
 			}
 		});
 }
@@ -269,16 +251,12 @@ function navcheck(id){
 	if(id=="NewNavbtn") {
 		if($('#OldNav').hasClass("show") == true) 
 			$('#OldNav').removeClass("show");
-
 			$('OldNavbtn').addClass("collapsed")
-
 		}
 	else if(id =="OldNavbtn") {
 		if($('#NewNav').hasClass("show") == true) 
 			$('#NewNav').removeClass("show");
-
 			$('NewNavbtn').addClass("collapsed")
-
 	}
 }
 
@@ -293,6 +271,7 @@ function viewallblood(){
 	});
 }
 
+
 function viewallorg(){
 	$.ajax({
 		type: "POST",
@@ -302,6 +281,7 @@ function viewallorg(){
 		 			}
 	});
 }
+
 
 function viewanorg(){
 	d = {
@@ -318,6 +298,7 @@ function viewanorg(){
 
 }
 
+
 function viewbybg(){
 	d = {
 		'bg': $("#bg")[0].value,
@@ -332,6 +313,7 @@ function viewbybg(){
 		 			}
 	});
 }
+
 
 function upddonor(id){
 	if(id == 'updname'){
@@ -381,28 +363,15 @@ function upddonor(id){
 					$('#modalbody').html(data['res'] + data['row']);
 					if($('.modal-header').hasClass("bg-danger") == true) 
 						$('.modal-header').removeClass("bg-danger");
-
 					$('.modal-header').addClass("bg-success");
 					$('#mymodal').modal();
 				}
 				else if(data['row'] == 0){
-					$('#modalhead').html("Oops!");
-					$('#modalbody').html(" That entry does not exist!");
-					if($('.modal-header').hasClass("bg-success") == true) 
-						$('.modal-header').removeClass("bg-success");
-
-					$('.modal-header').addClass("bg-danger");
-					$('#mymodal').modal();
+					oopsError("foreign")
 				}
 		},
 			error: function (){
-			$('#modalhead').html("Oops!");
-			$('#modalbody').html(" There was an error!");
-			if($('.modal-header').hasClass("bg-success") == true) 
-				$('.modal-header').removeClass("bg-success");
-
-			$('.modal-header').addClass("bg-danger");
-			$('#mymodal').modal();
+				oopsError("error");
 		}
 	});
 }
@@ -410,11 +379,11 @@ function upddonor(id){
 
 function dele(id){
 	var bid = $('#' + id).children('td:first').text();
-	$('#' + id).fadeOut('slow', function(here){ 
+	if(id != 0) {
+		$('#' + id).fadeOut('slow', function(here){ 
             $(this).remove();                    
         });    
-
-	console.log("1",bid);
+	}
 	send("del",bid,null,null);
 }
 
@@ -426,3 +395,57 @@ function addRow() {
 	});
 }	
 
+
+function fieldBlank(){
+	$('#modalhead').html("Oops!");
+	$('#modalbody').html("Some field was left blank, please fill in!");
+	$('.modal-header').addClass("bg-warning");
+	$('#mymodal').modal();
+}
+
+
+function loginajax(){
+	$.ajax({
+				async:true,
+				type: "POST",
+				url: "/login", //name of python method
+				data: login,
+				success: function(response){
+				 				$('body').html(response); //replace html id 'response'
+				 }
+		});
+}
+
+
+function checkBlank(arraycheck){
+	var blank = 0;
+	for (var i = 0 ; i <arraycheck.length ; i++) {
+		var element = arraycheck[i];
+		for(var j = 0; j < element.length; j++){
+			if(element[j] == ""){
+				fieldBlank();
+				blank=1;
+				break;
+			}
+		}
+		if(blank==1) break;
+	}
+	if(blank!=1)
+		$('.modal-header').removeClass("bg-warning");
+	return blank;
+}
+
+
+function oopsError(type){
+	$('#modalhead').html("Oops!");
+	if($('.modal-header').hasClass("bg-success") == true) 
+		$('.modal-header').removeClass("bg-success");
+	$('.modal-header').addClass("bg-danger");
+	if (type == "foreign")
+		$('#modalbody').html(" That entry does not exist!");
+	else if(type == "primary")
+		$('#modalbody').html(" That entry already exists!");
+	else	
+		$('#modalbody').html(" There was an error!");
+	$('#mymodal').modal();
+}
