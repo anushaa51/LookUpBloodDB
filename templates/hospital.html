@@ -1,3 +1,21 @@
+<div class="jumbotron font1">
+		<div class="text-center">
+			<span class="drop">
+				<i class="fas fa-tint fa-4x"></i>
+			</span>
+	  		<h1 class="display-4 inline">Blood Bank Database</h1> 
+	  	</div>
+  	
+  		<hr class="my-4 text-center">
+  		<p class="text-center">Database for maintaining and locating ???</p>
+ 
+  			
+  				<button class = "btn-round bg-light" id = "home" onclick="wlogin(this.id)"><i class="fas fa-home fa-2x"></i> Home</button>
+  	
+  			<button class = "btn-round bg-light" id = "logout" onclick="location.href='./'"><i class="fas fa-sign-out-alt fa-2x"></i>Logout</button>
+ </div>
+
+<div id = "replace">
 <div class = "font2">
 
 
@@ -5,20 +23,21 @@
 			<div class="card-header text-center" id = "h3"> <h4>Enter hospital ID and blood group</h4></div>
 			<div class="card-body text-primary text-center mx-auto" style="line-height: 50px;">
 				<form>
-					<div class = "form-row align-items-center">
+					<div class = "form-row justify-content-center">
 			    		<div class="col-sm-5">
 			      			<input type="text" class="form-control btn-round" id="hid" placeholder="Hospital ID">
 			    		</div>
 			    		<div class="col-sm-5">
-			      			<input type="text" class="form-control btn-round" id="bgrp" placeholder="Blood Group">
+			      			<input type="text" class="form-control btn-round" id="bg" placeholder="Blood Group">
 			   		 	</div>	
 			   		 </div>
 				</form>
 		  
 	    		<div class = "text-center">
-	    			<button type="button" class="btn btn-dark btn-round mb-1"> Search </button>
+	    			<button type="button" class="btn btn-dark btn-round mb-1 mt-3" onclick="viewbybg()"> Search </button>
 				</div>
 				
 			</div>
 	</div>
+</div>
 </div>

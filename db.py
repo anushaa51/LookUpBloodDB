@@ -222,6 +222,7 @@ def insert():
                 cursor.execute(sql1,val1)
                 cursor.execute(sql2,val2)
                 cursor.execute(sql3,val3)
+                cursor.execute("INSERT into dummy values('1')")
                 conobj.commit()
                 # conobj.close()
                 return jsonify({'res': "SUCC"})
@@ -245,6 +246,8 @@ def insert():
                 cursor = conobj.cursor(prepared=True)
                 cursor.execute(sql2,val2)
                 cursor.execute(sql3,val3)
+                cursor.execute("INSERT into dummy values('1')")
+
                 conobj.commit()
                 # conobj.close()
                 return jsonify({'res': "SUCC"})
@@ -278,6 +281,8 @@ def query(username,password,sql,val):
                                        password=password)
         if conobj.is_connected():
             cursor = conobj.cursor(prepared=True)
+            # cursor.execute("delimiter //")
+            cursor.execute("call heck1('B02')");
             cursor.execute(sql,val)
             row = cursor.rowcount
             conobj.commit()
@@ -351,11 +356,13 @@ def viewanorg():
 
 @app.route('/viewbybg',methods = ['POST'])
 def viewbybg():
+    username=request.form.get('username')
+    password=request.form.get('password')
     try:
         conobj = mysql.connector.connect(host='localhost',
                                        database='db',
-                                       user='root',
-                                       password='antechi')
+                                       user=username,
+                                       password=password)
         if conobj.is_connected():
             cursor = conobj.cursor()            
             query = "SELECT b_group,br.o_id,br.br_id,address,br_phone,dist from donor d, blood b,blood_br bbr,branch br,distance di where h_id = " + "'" + request.form.get('hid') + "'" + " and b_group = " + "'" + request.form.get('bg') + "'" + " and d.d_id = b.d_id and b.b_id = bbr.b_id and bbr.o_id = br.o_id and br.o_id = di.o_id and bbr.br_id = br.br_id and br.br_id = di.br_id order by (dist)"

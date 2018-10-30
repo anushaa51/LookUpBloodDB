@@ -3,29 +3,25 @@ var loginglobal;
 var row_id = 1;
 
 function wlogin(id){
-	
-
-		if(id == "login") {
-			if($("#username")[0].value == '' || $("#password")[0].value == '') {
-				fieldBlank();
-				}
-
-			else {
-				window.login = {'username':$("#username")[0].value, //get username and password values from webpage via its id and create login object
-					 	'password':$("#password")[0].value
-						};
-			window.loginglobal = login; //global object to store login details throughout session
-			loginajax();
-			}
+	if(id == "login") {
+		if($("#username")[0].value == '' || $("#password")[0].value == '') {
+			fieldBlank();
 		}
+		else {
+		window.login = {'username':$("#username")[0].value, //get username and password values from webpage via its id and create login object
+						'password':$("#password")[0].value
+						};
+		window.loginglobal = login; //global object to store login details throughout session
+			loginajax();
+		}
+	}
 	
-		else if(id == "home"){
-			window.login = {'username' :loginglobal.username,
+	else if(id == "home"){
+		window.login = {'username' :loginglobal.username,
 						 'password' :loginglobal.password
 						};
-			loginajax();
-
-		}
+		loginajax();
+	}
 }
 	
 
@@ -300,9 +296,13 @@ function viewanorg(){
 
 
 function viewbybg(){
+	console.log(loginglobal.username,loginglobal.password)
 	d = {
 		'bg': $("#bg")[0].value,
-		'hid': $("#hid")[0].value
+		'hid': $("#hid")[0].value,
+		'username': loginglobal.username,
+		'password': loginglobal.password,	
+
 	};
 	$.ajax({
 		type: "POST",
