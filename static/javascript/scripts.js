@@ -352,6 +352,16 @@ function upddonor(id){
 			'name':$("#name")[0].value,
 
 		};
+	else if(id == 'orgaddr')
+		d = {
+			'type':'orgaddr',
+			'oid':$("#oid2")[0].value,
+			'brid':$("#brid2")[0].value,
+			'addr':$("#addr")[0].value,
+			'hid1':$("#ohid1")[0].value,
+			'hid2':$("#ohid2")[0].value,
+			'hid3':$("#ohid3")[0].value
+		};
 
 	$.ajax({
 		type: "POST",
@@ -360,7 +370,7 @@ function upddonor(id){
 			success: function(data){
 				if(data['row'] > 0){
 					$('#modalhead').html("Congrats!");
-					$('#modalbody').html(data['res'] + data['row']);
+					$('#modalbody').html(data['res']);
 					if($('.modal-header').hasClass("bg-danger") == true) 
 						$('.modal-header').removeClass("bg-danger");
 					$('.modal-header').addClass("bg-success");
@@ -449,3 +459,9 @@ function oopsError(type){
 		$('#modalbody').html(" There was an error!");
 	$('#mymodal').modal();
 }
+
+ $('#c1').hover(function(){
+      $( "#name" ).prop( "disabled", true );        
+ });
+
+      $( "#ohid1o" ).prop( "disabled", true );        

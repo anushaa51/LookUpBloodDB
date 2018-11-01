@@ -1,94 +1,110 @@
+<div class = "text-center">
+<button class="btn btn-light btn-sm btn-round mt-3 updbtn">
+<h3 class="text-center"> Choose required organisation info to update</h3></button></div>
 
 	
-<div class="container font 2 mb-2">
-  <div class="row justify-content-md-center">
-   <!--  <div class="col-md-5">
-		<button type="button" class="btn btn-info dropdown-toggle btn-lg btn-block " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Address</button>
-		<div class="dropdown-menu">
-			<form class="dropdown-item">
-			    <div class="form-row">
+<div class = "card-deck justify-content-center mt-5">
+	<div class="card border-primary mb-3 text-center card-round" id = "c1" style="max-width: 18rem;">
+		<div class="card-header" id = "h1">Address</div>
+		<div class="card-body text-primary">
+			<form>
+			    <div class="form-row justify-content-center">
 			    	<div class="col-sm-5">
-				      	<input type="text" class="form-control btn-round" id="oid" placeholder="Org ID">
+				      	<input type="text" class="form-control btn-round" id="oid2" placeholder="Org ID">
 					</div>
 			
 			   		<div class="col-sm-5">
-						<input type="text" class="form-control btn-round" placeholder="Branch ID">
+						<input type="text" class="form-control btn-round" id ="brid2" placeholder="Branch ID">
 					</div>
 				</div>
 			</form>
 
-			<div class="input-group dropdown-item">
-				<div class="input-group-prepend">
-					<span class="input-group-text" >New Address</span>
-				</div>
-				<input type="text" class="form-control" placeholder="Address" aria-label="addr" aria-describedby="basic-addon1">
+			<div class="input-group mt-2">
+				
+				<input type="text" class="form-control btn-round" id = "addr" placeholder="New Address" aria-label="addr" aria-describedby="basic-addon1">
 			</div>
-			<div class="input-group dropdown-item">
-				<div class="input-group-prepend">
-					<span class="input-group-text" >New Distance</span>
-				</div>
-				<input type="text" class="form-control" placeholder="Address" aria-label="addr" aria-describedby="basic-addon1">
-			</div>
-			<div class = "text-center dropdown-item">
-	    		<button type="button" class="btn btn-dark btn-round"> Update </button>
-			</div>
-		</div>
-	</div> -->
+			<div class="input-group">
+				<div class="container font 2 mb-2 mt-2">
+				  	<div class="row justify-content-md-center">
+				    	<div class="col">
+					
+							<form>
+								<div class="form-row">
+								    	<div class="col-sm-4">
+									      	<input type="number" id = "ohid1" max = "60" min = "0" step = "0.01" class="form-control btn-round"  placeholder="HID 1">
+										</div>
+								
+								   		<div class="col-sm-4">
+											<input type="number" id = "ohid2" max = "60" min = "0" step = "0.01" class="form-control btn-round" placeholder="HID 2">
+										</div>
+										<div class="col-sm-4">
+											<input type="number" id = "ohid3" max = "60" min = "0" step = "0.01" class="form-control btn-round" placeholder="HID 3">
+										</div>
+									</div>
+							</form>
+						
+						</div>
 
-
-    <div class="col-md-5 mt-5">
-		<button type="button" class="btn btn-info dropdown-toggle btn-lg btn-block " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Organisation Name</button>
-		<div class="dropdown-menu">
-		    <div class="input-group dropdown-item">
-				  <div class="input-group-prepend">
-				    <span class="input-group-text"  >Org ID</span>
-				  </div>
-				  <input type="text" class="form-control" id = "oid1" placeholder="OID" aria-label="OID" aria-describedby="basic-addon1">
+				   </div>
+				</div>
 			</div>
-		    <div class="input-group dropdown-item">
-				  <div class="input-group-prepend">
-				    <span class="input-group-text"  >New Name</span>
-				  </div>
-				  <input type="text" class="form-control" id = "name" placeholder="New Name" aria-label="name" aria-describedby="basic-addon1">
-			</div>
-			<div class = "text-center dropdown-item">
-	    			<button type="button" class="btn btn-sm btn-dark btn-round" id = "orgname" onclick="upddonor(this.id)"> Update </button>
+			<div class = "text-center">
+	    		<button type="button" class="btn btn-dark btn-round" id = "orgaddr" onclick="upddonor(this.id)"> Update </button>
 			</div>
 		</div>
 	</div>
-	    <div class="col-md-5 mt-5">
-		<button type="button" class="btn btn-info dropdown-toggle btn-lg btn-block " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Phone Number</button>
-		<div class="dropdown-menu">
-		    <div class="input-group dropdown-item">
+
+	<div class="card border-success mb-3 text-center card-round" id = "c2" style="max-width: 18rem;">
+		<div class="card-header" id = "h2">Organisation Name</div>
+		<div class="card-body text-primary">
+			<form>
+				<div class="input-group">
+					<div class="input-group-prepend">
+					   <span class="input-group-text"  >Org ID</span>
+					</div>
+					<input type="text" class="form-control" id = "oid1" placeholder="OID" aria-label="OID" aria-describedby="basic-addon1">
+				</div>
+		    	<div class="input-group">
+					<div class="input-group-prepend">
+					   <span class="input-group-text"  >New Name</span>
+					</div>
+					<input type="text" class="form-control" id = "name" placeholder="New Name" aria-label="name" aria-describedby="basic-addon1"	>
+				</div>
+				<div class = "text-center">
+	    			<button type="button" class="btn btn-sm btn-dark btn-round" id = "orgname" onclick="upddonor(this.id)"> Update </button>
+				</div>
+			</form>			
+		</div>
+	</div>
+
+	<div class="card border-danger mb-3 text-center card-round" id = "c3" style="max-width: 18rem;">
+		<div class="card-header" id = "h3">Phone Number</div>
+		<div class="card-body text-primary">
+		    <div class="input-group">
 				  <div class="input-group-prepend">
 				    <span class="input-group-text"  >Org ID</span>
 				  </div>
 				  <input type="text" class="form-control" id = "oid" placeholder="OID" aria-label="OID" aria-describedby="basic-addon1">
 			</div>
-			<div class="input-group dropdown-item">
+			<div class="input-group">
 				  <div class="input-group-prepend">
 				    <span class="input-group-text" >Branch ID</span>
 				  </div>
 				  <input type="text" class="form-control" id = "brid" placeholder="Branch ID" aria-label="Brid" aria-describedby="basic-addon1">
 			</div>
-		    <div class="input-group dropdown-item">
+		    <div class="input-group">
 				  <div class="input-group-prepend">
 				    <span class="input-group-text"  >New Phone</span>
 				  </div>
 				  <input type="text" class="form-control" id = "phone" placeholder="Phone Number" aria-label="phone" aria-describedby="basic-addon1">
 			</div>
-			<div class = "text-center dropdown-item">
+			<div class = "text-center">
 	    			<button type="button" class="btn btn-sm btn-dark btn-round" id = "org" onclick="upddonor(this.id)"> Update </button>
 			</div>
+			
 		</div>
 	</div>
-
-
-
-  </div>
-
 </div>
-<!-- Modal -->
 <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content btn-round">

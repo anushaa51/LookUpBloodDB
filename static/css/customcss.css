@@ -7,6 +7,12 @@
   font-family: 'PT Sans';
   src : url('PT_Sans-Web-Regular.ttf');
 }
+.updbtn{
+  padding-top: 0.50rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  padding-bottom: 0.25rem; 
+}
 .btn-round{
 border-radius: 25px;
 }
@@ -24,6 +30,9 @@ input:hover{
 
 #logout {
 float: right;
+ }
+ #logout:focus{
+  border:none;
  }
 #home {
   float: left;

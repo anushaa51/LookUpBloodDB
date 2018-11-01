@@ -33,9 +33,23 @@ def home():
 def upddonor():
     # username=request.form.get('username')
     # password=request.form.get('password')
-    if request.form.get('type') == "name":
+    if request.form.get('type') == "orgaddr":
+        val = [[request.form.get('hid1'),request.form.get('oid'),request.form.get('brid'),"H01"],[request.form.get('hid2'),request.form.get('oid'),request.form.get('brid'),"H02"],[request.form.get('hid3'),request.form.get('oid'),request.form.get('brid'),"H03"]]
+        sql = "UPDATE distance set dist = ? where o_id = ? and br_id = ? and h_id = ?"
+        sql2 = "UPDATE branch set address = ? where o_id = ? and br_id = ?"
+        val2 = [request.form.get('addr'),request.form.get('oid'),request.form.get('brid')] 
+        row = execQuery(sql2,val2)
+        for q in val:
+           execQuery(sql,q)
+        return jsonify(
+                  {'res':"Successfully updated!",
+                   'row':row
+                  })
+
+    elif request.form.get('type') == "name":
         val = [request.form.get('name'),request.form.get('did')]
         sql="UPDATE donor set name = ? WHERE d_id =  ?"
+
 
     elif request.form.get('type') == "phone":
         val = [request.form.get('phone'),request.form.get('did')]
@@ -59,8 +73,11 @@ def upddonor():
         sql="UPDATE organization set org_name = ? WHERE o_id = ?"
 
 
-    return query('root','antechi',sql,val)
-
+    row = execQuery(sql,val)
+    return jsonify(
+                  {'res':"Successfully updated!",
+                   'row':row
+                  })
 
 
 
@@ -74,20 +91,8 @@ def orgbranchdel():
         val = [request.form.get('oid'),request.form.get('brid')]
         sql1 = "DELETE from blood where b_id in ( select b_id from blood_br where o_id = ? and br_id = ?) "
         sql2 = "DELETE from branch where o_id = ? and br_id = ?"
-
-    try:
-        conobj = mysql.connector.connect(host='localhost',
-                                       database='db',
-                                       user='root',
-                                       password='antechi')
-        if conobj.is_connected():
-            cursor = conobj.cursor(prepared=True)
-            cursor.execute(sql1,val)
-            row = cursor.rowcount #nunber of blood entries deleted
-            cursor.execute(sql2,val)
-            conobj.commit()
-
-    finally: conobj.close()
+    row = execQuery(sql1,val)
+    execQuery(None.sql2,val)
     return jsonify(
                   {'res':" Deleted blood entries : ",
                    'row':row
@@ -262,38 +267,16 @@ def insert():
               return jsonify({'res': "UNK"})
       finally: conobj.close()
 
-@app.route("/dele", methods = ['POST'])
+@app.route("/dele", methods = ['POST']) #deletes from display all blood 
 def dele():
     username=request.form.get('username')
     password=request.form.get('password')
 
     sql="DELETE FROM blood WHERE b_id = ?"
     val=[request.form.get('bid')]
-    return query(username,password,sql,val)
+    execQuery(sql,val)
+    return("None")
 
-
-def query(username,password,sql,val):
-
-    try:
-        conobj = mysql.connector.connect(host='localhost',
-                                       database='db',
-                                       user=username,
-                                       password=password)
-        if conobj.is_connected():
-            cursor = conobj.cursor(prepared=True)
-            # cursor.execute("delimiter //")
-            cursor.execute("call heck1('B02')");
-            cursor.execute(sql,val)
-            row = cursor.rowcount
-            conobj.commit()
-                
-
-    finally: conobj.close()
-    return jsonify(
-                  {'res':" Updated entries : ",
-                   'row':row
-                  })
-    
 
 
 @app.route('/viewallblood', methods = ['POST'])       
@@ -375,7 +358,45 @@ def viewbybg():
     finally: conobj.close()
     return "a"
 
-
+def execQuery(sql,val):
+  try:
+      conobj = mysql.connector.connect(host='localhost',
+                                           database='db',
+                                           user='root',
+                                           password='antechi')
+      if conobj.is_connected():
+          cursor = conobj.cursor(prepared=True)
+          cursor.execute(sql,val)
+          conobj.commit() 
+          return cursor.rowcount       
+  except Error as err:
+          return err.errno
+  finally: conobj.close()
+  return None
 
 if __name__ == "__main__":
     app.run()
+
+# def query(username,password,sql,val):
+
+#     try:
+#         conobj = mysql.connector.connect(host='localhost',
+#                                        database='db',
+#                                        user=username,
+#                                        password=password)
+#         if conobj.is_connected():
+#             cursor = conobj.cursor(prepared=True)
+#             cursor.execute(sql,val)
+#             row = cursor.rowcount
+#             conobj.commit()
+                
+
+#     finally: conobj.close()
+#     return jsonify(
+#                   {'res':" Updated entries : ",
+#                    'row':row
+#                   })
+    
+
+
+
