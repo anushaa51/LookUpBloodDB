@@ -1,72 +1,76 @@
 <div class = "text-center">
-<button class="btn btn-light btn-sm btn-round mt-3 updbtn" >
-<h3 class="text-center"> Choose required donor info to update</h3></button>
+	<button class="btn btn-light btn-sm btn-round mt-3 updbtn" >
+		<h3 class="text-center"> Choose required donor info to update</h3>
+	</button>
 </div>
-<div class="container font2 mb-2">
-  <div class="row mt-10">
-    <div class="col-md-4">
-		<button type="button" class="btn btn-info dropdown-toggle btn-lg btn-block " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Name</button>
-		<div class="dropdown-menu">
-		    <div class="input-group mb-3 dropdown-item">
+
+<div class = "card-deck justify-content-center mt-5">
+
+	<div class="card border-primary mb-3 text-center card-round font2" id = "c1" style="max-width: 18rem;">
+		<div class="card-header" id = "h1">Name</div>
+		<div class="card-body text-primary">
+			<div class="input-group mb-3">
 				  <div class="input-group-prepend">
-				    <span class="input-group-text">Donor ID</span>
+				    <span class="input-group-text btn-round">Donor ID</span>
 				  </div>
-				  <input type="text" class="form-control " placeholder="DID" id = "did1" aria-label="DID" aria-describedby="basic-addon1">
+				  <input type="text" class="form-control btn-round " placeholder="DID" id = "did1" aria-label="DID" aria-describedby="basic-addon1">
 			</div>
-		    <div class="input-group mb-3 dropdown-item">
+		    <div class="input-group mb-3">
 				  <div class="input-group-prepend">
-				    <span class="input-group-text">New Name</span>
+				    <span class="input-group-text btn-round">New Name</span>
 				  </div>
-				  <input type="text" class="form-control" placeholder="Full Name" id="name" aria-label="FullName" aria-describedby="basic-addon1">
+				  <input type="text" class="form-control btn-round" placeholder="Full Name" id="name" aria-label="FullName" aria-describedby="basic-addon1">
 			</div>
+			
 			<div class = "text-center dropdown-item">
 	    			<button type="button" class="btn btn-dark btn-round" id = "updname" onclick="upddonor(this.id)"> Update </button>
 			</div>
 		</div>
 	</div>
-    <div class="col-md-4">
-		<button type="button" class="btn btn-info dropdown-toggle btn-lg btn-block " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Phone Number</button>
-		<div class="dropdown-menu">
-		    <div class="input-group mb-3 dropdown-item">
+
+	<div class="card border-success mb-3 text-center card-round" id = "c2" style="max-width: 18rem;">
+		<div class="card-header" id = "h2">Phone Number</div>
+		<div class="card-body text-primary">
+			<div class="input-group mb-3">
 				  <div class="input-group-prepend">
-				    <span class="input-group-text"  >Donor ID</span>
+				    <span class="input-group-text btn-round"  >Donor ID</span>
 				  </div>
-				  <input type="text" class="form-control " placeholder="DID" id = "did2" aria-label="DID" aria-describedby="basic-addon1">
+				  <input type="text" class="form-control btn-round " placeholder="DID" id = "did2" aria-label="DID" aria-describedby="basic-addon1">
 			</div>
-		    <div class="input-group mb-3 dropdown-item">
+		    <div class="input-group mb-3">
 				  <div class="input-group-prepend">
-				    <span class="input-group-text"  >New Phone</span>
+				    <span class="input-group-text btn-round"  >New Phone</span>
 				  </div>
-				  <input type="text" class="form-control" placeholder="Phone Number" id = "phone" aria-label="phone" aria-describedby="basic-addon1">
+				  <input type="text" class="form-control btn-round" placeholder="Phone Number" id = "phone" aria-label="phone" aria-describedby="basic-addon1">
 			</div>
 			<div class = "text-center dropdown-item">
 	    			<button type="button" class="btn btn-dark btn-round" id = "updphone" onclick="upddonor(this.id)"> Update </button>
 			</div>
 		</div>
 	</div>
-    <div class="col-md-4">
-		<button type="button" class="btn btn-info dropdown-toggle btn-lg btn-block " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Weight</button>
-		<div class="dropdown-menu">
+
+	<div class="card border-danger mb-3 text-center card-round" style="max-width: 18rem;">
+		<div class="card-header" id = "h3">Weight</div>
+		<div class="card-body text-primary">
 		    <div class="input-group mb-3 dropdown-item">
 				  <div class="input-group-prepend">
-				    <span class="input-group-text"  >Donor ID</span>
+				    <span class="input-group-text btn-round"  >Donor ID</span>
 				  </div>
-				  <input type="text" class="form-control " placeholder="DID" id = "did3" aria-label="DID" aria-describedby="basic-addon1">
+				  <input type="text" class="form-control  btn-round" placeholder="DID" id = "did3" aria-label="DID" aria-describedby="basic-addon1">
 			</div>
 		    <div class="input-group mb-3 dropdown-item">
 				  <div class="input-group-prepend">
-				    <span class="input-group-text"  >New Weight</span>
+				    <span class="input-group-text btn-round"  >New Weight</span>
 				  </div>
-				  <input type="number" class="form-control" name="weight" min = "50" step = "0.1" placeholder="Weight" id = "weight" aria-label="Weight" aria-describedby="basic-addon1">
+				  <input type="number" class="form-control btn-round" name="weight" min = "50" step = "0.1" placeholder="Weight" id = "weight" aria-label="Weight" aria-describedby="basic-addon1">
 			</div>
 			<div class = "text-center dropdown-item">
 	    			<button type="button" class="btn btn-dark btn-round" id = "updweight" onclick="upddonor(this.id)"> Update </button>
 			</div>
+			
 		</div>
-	</div>	
-
-  </div>
-
+	</div>
+    
 </div>
 <!-- Modal -->
 <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

@@ -60,7 +60,7 @@ function orgbranchdel(id){
 		data: d,
 		success: function(data){
 				if(data['row'] > 0){
-					$('#modalhead').html("Congrats!");
+					$('#modalhead').html("Delete successful!");
 					$('#modalbody').html(data['res'] + data['row']);
 					if($('.modal-header').hasClass("bg-danger") == true) 
 						$('.modal-header').removeClass("bg-danger");
@@ -368,7 +368,10 @@ function upddonor(id){
 		url: "/upddonor",
 		data: d,
 			success: function(data){
-				if(data['row'] > 0){
+				if(data['rowsmatched'] == 0){
+					oopsError("foreign")
+				}	
+				else if(data['rowsaffected'] > 0){
 					$('#modalhead').html("Congrats!");
 					$('#modalbody').html(data['res']);
 					if($('.modal-header').hasClass("bg-danger") == true) 
@@ -376,8 +379,14 @@ function upddonor(id){
 					$('.modal-header').addClass("bg-success");
 					$('#mymodal').modal();
 				}
-				else if(data['row'] == 0){
-					oopsError("foreign")
+				
+				else if(data['rowsaffected'] == 0 && data['rowsmatched']>0){
+					$('#modalhead').html("Are you sure?");
+					$('#modalbody').html("Existing and modified data are identical");
+					if($('.modal-header').hasClass("bg-danger") == true) 
+						$('.modal-header').removeClass("bg-danger");
+					$('.modal-header').addClass("bg-success");
+					$('#mymodal').modal();
 				}
 		},
 			error: function (){
@@ -460,8 +469,13 @@ function oopsError(type){
 	$('#mymodal').modal();
 }
 
- $('#c1').hover(function(){
-      $( "#name" ).prop( "disabled", true );        
- });
+ // $('#c1').hover(function(){
+ //      $( "#name" ).prop( "disabled", true );        
+ // });
 
-      $( "#ohid1o" ).prop( "disabled", true );        
+ // $( "#username" ).prop( "disabled", true );        
+// function c(){
+// var a = document.getElementsByTagName('tr');
+// var new1 = document.createElement('td');
+// new1.innerHTML = "OH"
+// a[1].appendChild(new1);}

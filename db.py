@@ -1,4 +1,3 @@
-
 import mysql.connector,sys
 from mysql.connector import Error
 from flask import Flask, request, jsonify, render_template
@@ -12,10 +11,10 @@ def loginPage():
 
 @app.route("/login", methods = ['POST'])
 def login():
-    username=request.form.get('username') #getting details from POST 
+    username=request.form.get('username') 
     password=request.form.get('password')
     try:
-        if username=='root' and password=='antechi':
+        if username=='root' and password=='root':
             return render_template('select.html')
         elif username=='hospital' and password == 'h':
             return render_template('hospital.html')
@@ -31,53 +30,86 @@ def home():
 
 @app.route("/upddonor",methods = ['POST'])
 def upddonor():
-    # username=request.form.get('username')
-    # password=request.form.get('password')
     if request.form.get('type') == "orgaddr":
-        val = [[request.form.get('hid1'),request.form.get('oid'),request.form.get('brid'),"H01"],[request.form.get('hid2'),request.form.get('oid'),request.form.get('brid'),"H02"],[request.form.get('hid3'),request.form.get('oid'),request.form.get('brid'),"H03"]]
-        sql = "UPDATE distance set dist = ? where o_id = ? and br_id = ? and h_id = ?"
-        sql2 = "UPDATE branch set address = ? where o_id = ? and br_id = ?"
-        val2 = [request.form.get('addr'),request.form.get('oid'),request.form.get('brid')] 
-        row = execQuery(sql2,val2)
-        for q in val:
-           execQuery(sql,q)
-        return jsonify(
-                  {'res':"Successfully updated!",
-                   'row':row
-                  })
+        sql1 = "SELECT count(*) from branch where o_id = ? and br_id = ?"
+        val1 = [request.form.get('oid'),request.form.get('brid')]
+        rowsmatched = count(sql1,val1)
+        if rowsmatched > 0:
+            val = [[request.form.get('hid1'),request.form.get('oid'),request.form.get('brid'),"H01"],[request.form.get('hid2'),request.form.get('oid'),request.form.get('brid'),"H02"],[request.form.get('hid3'),request.form.get('oid'),request.form.get('brid'),"H03"]]
+            sql = "UPDATE distance set dist = ? where o_id = ? and br_id = ? and h_id = ?"
+            sql2 = "UPDATE branch set address = ? where o_id = ? and br_id = ?"
+            val2 = [request.form.get('addr'),request.form.get('oid'),request.form.get('brid')] 
+            row = execQuery(sql2,val2)
+            for q in val:
+               execQuery(sql,q)
+            return jsonify({'res':"Successfully updated!",
+                       'rowsmatched':rowsmatched,
+                       'rowsaffected':row
+                      })
+
+        else:
+            return jsonify({
+                       'rowsmatched':rowsmatched
+                       })
 
     elif request.form.get('type') == "name":
-        val = [request.form.get('name'),request.form.get('did')]
-        sql="UPDATE donor set name = ? WHERE d_id =  ?"
+        sql1 = "SELECT count(*) from donor where d_id = ?"
+        val1 = [request.form.get('did')]
+        rowsmatched = count(sql1,val1)
+        # print(rowsmatched)
+        if rowsmatched > 0:
+            val = [request.form.get('name'),request.form.get('did')]
+            sql="UPDATE donor set name = ? WHERE d_id =  ?"
+            # rowsaffected = execQuery(sql,val)
 
 
     elif request.form.get('type') == "phone":
-        val = [request.form.get('phone'),request.form.get('did')]
-
-        sql="UPDATE donor set phone = ? WHERE d_id =  ?"
+        sql1 = "SELECT count(*) from donor where d_id = ?"
+        val1 = [request.form.get('did')]
+        rowsmatched = count(sql1,val1)
+        # print(rowsmatched)
+        if rowsmatched > 0:
+            val = [request.form.get('phone'),request.form.get('did')]
+            sql="UPDATE donor set phone = ? WHERE d_id =  ?"
+            # rowsaffected = execQuery(sql,val)
 
 
     elif request.form.get('type') == "weight":
-        val = [request.form.get('weight'),request.form.get('did')]
-
-        sql="UPDATE donor set weight = ? WHERE d_id =  ?"
+        sql1 = "SELECT count(*) from donor where d_id = ?"
+        val1 = [request.form.get('did')]
+        rowsmatched = count(sql1,val1)
+        if rowsmatched > 0:
+            val = [request.form.get('weight'),request.form.get('did')]
+            sql="UPDATE donor set weight = ? WHERE d_id =  ?"
+            # rowsaffected = execQuery(sql,val)
 
     elif request.form.get('type') == "org":
-        val = [request.form.get('phone'),request.form.get('oid'),request.form.get('brid')]
-
-        sql="UPDATE branch set br_phone = ? WHERE o_id = ? and br_id = ?"
+        sql1 = "SELECT count(*) from branch where o_id = ? and br_id = ?"
+        val1 = [request.form.get('oid'),request.form.get('brid')]
+        rowsmatched = count(sql1,val1)
+        if rowsmatched > 0:
+            val = [request.form.get('phone'),request.form.get('oid'),request.form.get('brid')]
+            sql="UPDATE branch set br_phone = ? WHERE o_id = ? and br_id = ?"
+            # rowsaffected = execQuery(sql,val)
 
     elif request.form.get('type') == "orgname":
-        val = [request.form.get('name'),request.form.get('oid')]
+        sql1 = "SELECT count(*) from branch where o_id = ? and br_id = ?"
+        val1 = [request.form.get('oid'),request.form.get('brid')]
+        rowsmatched = count(sql1,val1)
+        if rowsmatched > 0:
+            val = [request.form.get('name'),request.form.get('oid')]
+            sql="UPDATE organization set org_name = ? WHERE o_id = ?"
+            # rowsaffected = execQuery(sql,val)
 
-        sql="UPDATE organization set org_name = ? WHERE o_id = ?"
-
-
-    row = execQuery(sql,val)
-    return jsonify(
-                  {'res':"Successfully updated!",
-                   'row':row
-                  })
+    if rowsmatched > 0:
+        rowsaffected = execQuery(sql,val)
+        return jsonify({'res':"Successfully updated!",
+                       'rowsmatched':rowsmatched,
+                       'rowsaffected':rowsaffected
+                      })
+    return jsonify({
+                       'rowsmatched':rowsmatched,
+                      })
 
 
 
@@ -85,16 +117,17 @@ def upddonor():
 def orgbranchdel():
     if request.form.get('type') == "org":
         val = [request.form.get('oid')]
-        sql1 = "DELETE from blood where b_id in ( select b_id from blood_br where o_id = ? ) "
+        # sql1 = "DELETE from blood where b_id in ( select b_id from blood_br where o_id = ? ) "
+        sql1 = "UPDATE blood_br set o_id ='GOV', br_id = 'DEF' where o_id = ? "
         sql2 = "DELETE from organization where o_id = ? "
     elif request.form.get('type') == "branch":
         val = [request.form.get('oid'),request.form.get('brid')]
-        sql1 = "DELETE from blood where b_id in ( select b_id from blood_br where o_id = ? and br_id = ?) "
+        sql1 = "UPDATE blood_br set o_id ='GOV', br_id = 'DEF' where o_id = ? and br_id = ?"
         sql2 = "DELETE from branch where o_id = ? and br_id = ?"
     row = execQuery(sql1,val)
-    execQuery(None.sql2,val)
+    execQuery(sql2,val)
     return jsonify(
-                  {'res':" Deleted blood entries : ",
+                  {'res':"Blood entries moved to Bengaluru City Blood Bank : ",
                    'row':row
                   })
 
@@ -116,7 +149,7 @@ def select():
             conobj = mysql.connector.connect(host='localhost',
                                            database='db',
                                            user='root',
-                                           password='antechi')
+                                           password='root')
             if conobj.is_connected():
                 cursor = conobj.cursor()
                 query = "SELECT * from blood natural join blood_br"
@@ -285,7 +318,7 @@ def viewallblood():
         conobj = mysql.connector.connect(host='localhost',
                                        database='db',
                                        user='root',
-                                       password='antechi')
+                                       password='root')
         if conobj.is_connected():
             cursor = conobj.cursor()
             query = "SELECT * from donor natural join blood"
@@ -304,7 +337,7 @@ def viewallorg():
         conobj = mysql.connector.connect(host='localhost',
                                        database='db',
                                        user='root',
-                                       password='antechi')
+                                       password='root')
         if conobj.is_connected():
             cursor = conobj.cursor()
             query = "SELECT * from organization"
@@ -324,7 +357,7 @@ def viewanorg():
         conobj = mysql.connector.connect(host='localhost',
                                        database='db',
                                        user='root',
-                                       password='antechi')
+                                       password='root')
         if conobj.is_connected():
             cursor = conobj.cursor()
             query = "SELECT org_name,br_id,address,br_phone from organization o natural join branch where o.o_id = " + '"' + request.form.get('oid') + '"'
@@ -339,31 +372,23 @@ def viewanorg():
 
 @app.route('/viewbybg',methods = ['POST'])
 def viewbybg():
-    username=request.form.get('username')
-    password=request.form.get('password')
-    try:
-        conobj = mysql.connector.connect(host='localhost',
-                                       database='db',
-                                       user=username,
-                                       password=password)
-        if conobj.is_connected():
-            cursor = conobj.cursor()            
-            query = "SELECT b_group,br.o_id,br.br_id,address,br_phone,dist from donor d, blood b,blood_br bbr,branch br,distance di where h_id = " + "'" + request.form.get('hid') + "'" + " and b_group = " + "'" + request.form.get('bg') + "'" + " and d.d_id = b.d_id and b.b_id = bbr.b_id and bbr.o_id = br.o_id and br.o_id = di.o_id and bbr.br_id = br.br_id and br.br_id = di.br_id order by (dist)"
-            cursor.execute(query)
 
-            data = cursor.fetchall()
+    conobj = execView()
+    cursor = conobj.cursor()            
+    query = "SELECT b_group,br.o_id,br.br_id,address,br_phone,dist from donor d, blood b,blood_br bbr,branch br,distance di where h_id = " + "'" + request.form.get('hid') + "'" + " and b_group = " + "'" + request.form.get('bg') + "'" + " and d.d_id = b.d_id and b.b_id = bbr.b_id and bbr.o_id = br.o_id and br.o_id = di.o_id and bbr.br_id = br.br_id and br.br_id = di.br_id order by (dist)"
+    cursor.execute(query)
 
-            return render_template("viewbybg.html", data=data)
+    data = cursor.fetchall()
+    conobj.close()
 
-    finally: conobj.close()
-    return "a"
+    return render_template("viewbybg.html", data=data)
 
 def execQuery(sql,val):
   try:
       conobj = mysql.connector.connect(host='localhost',
                                            database='db',
                                            user='root',
-                                           password='antechi')
+                                           password='root')
       if conobj.is_connected():
           cursor = conobj.cursor(prepared=True)
           cursor.execute(sql,val)
@@ -373,6 +398,36 @@ def execQuery(sql,val):
           return err.errno
   finally: conobj.close()
   return None
+
+def count(sql,val):
+  try:
+      conobj = mysql.connector.connect(host='localhost',
+                                           database='db',
+                                           user='root',
+                                           password='root')
+      if conobj.is_connected():
+          cursor = conobj.cursor(prepared=True)
+          cursor.execute(sql,val)
+          result = cursor.fetchone()
+          conobj.commit() 
+          return result[0]      
+  # except Error as err:
+  #         return err.errno
+  finally: conobj.close()
+  return None
+
+def execView():
+    # username=request.form.get('username')
+    # password=request.form.get('password')
+    conobj = mysql.connector.connect(host='localhost',
+                                       database='db',
+                                       user='root',
+                                       password='root')
+    if conobj.is_connected():
+        return conobj
+    else: 
+        return "a"
+
 
 if __name__ == "__main__":
     app.run()

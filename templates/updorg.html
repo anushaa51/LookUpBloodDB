@@ -1,6 +1,6 @@
 <div class = "text-center">
-<button class="btn btn-light btn-sm btn-round mt-3 updbtn">
-<h3 class="text-center"> Choose required organisation info to update</h3></button></div>
+	<button class="btn btn-light btn-sm btn-round mt-3 updbtn"><h3 class="text-center"> Choose required organisation info to update</h3></button>
+</div>
 
 	
 <div class = "card-deck justify-content-center mt-5">
@@ -23,6 +23,7 @@
 				
 				<input type="text" class="form-control btn-round" id = "addr" placeholder="New Address" aria-label="addr" aria-describedby="basic-addon1">
 			</div>
+			<h6 class="text-center text-dark mt-2 mb-1"> Distances to each hospital</h6>
 			<div class="input-group">
 				<div class="container font 2 mb-2 mt-2">
 				  	<div class="row justify-content-md-center">
@@ -31,14 +32,14 @@
 							<form>
 								<div class="form-row">
 								    	<div class="col-sm-4">
-									      	<input type="number" id = "ohid1" max = "60" min = "0" step = "0.01" class="form-control btn-round"  placeholder="HID 1">
+									      	<input type="number" id = "ohid1" max = "60" min = "0" step = "0.01" class="form-control btn-round"  placeholder="H1">
 										</div>
 								
 								   		<div class="col-sm-4">
-											<input type="number" id = "ohid2" max = "60" min = "0" step = "0.01" class="form-control btn-round" placeholder="HID 2">
+											<input type="number" id = "ohid2" max = "60" min = "0" step = "0.01" class="form-control btn-round" placeholder="H2">
 										</div>
 										<div class="col-sm-4">
-											<input type="number" id = "ohid3" max = "60" min = "0" step = "0.01" class="form-control btn-round" placeholder="HID 3">
+											<input type="number" id = "ohid3" max = "60" min = "0" step = "0.01" class="form-control btn-round" placeholder="H3">
 										</div>
 									</div>
 							</form>
@@ -60,45 +61,45 @@
 			<form>
 				<div class="input-group">
 					<div class="input-group-prepend">
-					   <span class="input-group-text"  >Org ID</span>
+					   <span class="input-group-text btn-round"  >Org ID</span>
 					</div>
-					<input type="text" class="form-control" id = "oid1" placeholder="OID" aria-label="OID" aria-describedby="basic-addon1">
+					<input type="text" class="form-control btn-round" id = "oid1" placeholder="OID" aria-label="OID" aria-describedby="basic-addon1">
 				</div>
-		    	<div class="input-group">
+		    	<div class="input-group mt-2">
 					<div class="input-group-prepend">
-					   <span class="input-group-text"  >New Name</span>
+					   <span class="input-group-text btn-round"  >New Name</span>
 					</div>
-					<input type="text" class="form-control" id = "name" placeholder="New Name" aria-label="name" aria-describedby="basic-addon1"	>
+					<input type="text" class="form-control btn-round" id = "name" placeholder="New Name" aria-label="name" aria-describedby="basic-addon1"	>
 				</div>
-				<div class = "text-center">
+				<div class = "text-center mt-2">
 	    			<button type="button" class="btn btn-sm btn-dark btn-round" id = "orgname" onclick="upddonor(this.id)"> Update </button>
 				</div>
 			</form>			
 		</div>
 	</div>
 
-	<div class="card border-danger mb-3 text-center card-round" id = "c3" style="max-width: 18rem;">
+	<div class="card border-danger mb-3 text-center card-round" style="max-width: 18rem;">
 		<div class="card-header" id = "h3">Phone Number</div>
 		<div class="card-body text-primary">
 		    <div class="input-group">
 				  <div class="input-group-prepend">
-				    <span class="input-group-text"  >Org ID</span>
+				    <span class="input-group-text btn-round"  >Org ID</span>
 				  </div>
-				  <input type="text" class="form-control" id = "oid" placeholder="OID" aria-label="OID" aria-describedby="basic-addon1">
+				  <input type="text" class="form-control btn-round" id = "oid" placeholder="OID" aria-label="OID" aria-describedby="basic-addon1">
 			</div>
-			<div class="input-group">
+			<div class="input-group mt-2">
 				  <div class="input-group-prepend">
-				    <span class="input-group-text" >Branch ID</span>
+				    <span class="input-group-text btn-round" >Branch ID</span>
 				  </div>
-				  <input type="text" class="form-control" id = "brid" placeholder="Branch ID" aria-label="Brid" aria-describedby="basic-addon1">
+				  <input type="text" class="form-control btn-round" id = "brid" placeholder="Branch ID" aria-label="Brid" aria-describedby="basic-addon1">
 			</div>
-		    <div class="input-group">
+		    <div class="input-group mt-2">
 				  <div class="input-group-prepend">
-				    <span class="input-group-text"  >New Phone</span>
+				    <span class="input-group-text btn-round"  >New Phone</span>
 				  </div>
-				  <input type="text" class="form-control" id = "phone" placeholder="Phone Number" aria-label="phone" aria-describedby="basic-addon1">
+				  <input type="text" class="form-control btn-round" id = "phone" placeholder="Phone Number" aria-label="phone" aria-describedby="basic-addon1">
 			</div>
-			<div class = "text-center">
+			<div class = "text-center mt-2">
 	    			<button type="button" class="btn btn-sm btn-dark btn-round" id = "org" onclick="upddonor(this.id)"> Update </button>
 			</div>
 			
